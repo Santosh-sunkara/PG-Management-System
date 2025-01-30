@@ -22,7 +22,7 @@ Installation & Setup 🛠️
 bash
 Copy
 Edit
-git clone https://github.com/Santosh-sunkara/pg-management.git
+git clone  https://poetic-sprite-640c24.netlify.app/vacancy
 cd pg-management
 2. Install Dependencies
 bash
