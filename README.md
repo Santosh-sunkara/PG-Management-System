@@ -2,6 +2,7 @@ PG Management System 🏠✨
 Overview
 StayEase is a web-based PG Management System that streamlines the management of Paying Guest (PG) accommodations. It enables PG owners to handle subscriptions, tenant details, and provides key action controls like View Details, Extend, Revoke, Hold, and Delete for efficient management. 🌍🔑
 Explore the project here: https://poetic-sprite-640c24.netlify.app/
+
 🧪 Login with:
 • Email: any valid email
 • Password: anything
