@@ -3,58 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <title>Standard Chartered UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h1 class="text-center mb-5">Welcome to Standard Chartered</h1>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <a class="navbar-brand" href="#">🏠</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active text-success" href="#">You're in India</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Our Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Promotions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+      </ul>
+      <button class="btn btn-success me-2">LOGIN</button>
+      <img src="https://www.sc.com/global/av/sc-logo.svg" alt="SC Logo" height="30">
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <div class="hero">
+    <h1 class="display-5 fw-bold">Welcome to Standard Chartered</h1>
+  </div>
+
+  <!-- Cards Section -->
+  <div class="container my-5">
     <div class="row g-4">
+
+      <!-- Card 1 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="images/elephant.jpg" class="card-img-top" alt="Wildlife">
+          <img src="https://images.unsplash.com/photo-1576085898322-4cf374d41905?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Wildlife">
           <div class="card-body">
             <h5 class="card-title">Combating the illegal wildlife trade</h5>
-            <p class="card-text">See how we work with partners...</p>
+            <p class="card-text">See how we work with partners to fight money laundering and the illegal wildlife trade.</p>
           </div>
         </div>
       </div>
+
+      <!-- Card 2 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="images/nri.jpg" class="card-img-top" alt="NRI Banking">
+          <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="NRI">
           <div class="card-body">
             <h5 class="card-title">Invest like you never left India</h5>
             <p class="card-text">Invest on-the-go with NRI Banking.</p>
           </div>
         </div>
       </div>
+
+      <!-- Card 3 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="images/world.jpg" class="card-img-top" alt="Travel">
+          <img src="https://images.unsplash.com/photo-1582719478173-ade07f3b7780?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Travel">
           <div class="card-body">
-            <h5 class="card-title">Explore the world like a local</h5>
-            <p class="card-text">Load up to 20 currencies...</p>
+            <h5 class="card-title">Explore the world like a local #PayLikeALocal</h5>
+            <p class="card-text">Load up to 20 currencies on the Multi-Currency Forex card. Apply now.</p>
           </div>
         </div>
       </div>
+
+      <!-- Card 4 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="images/app.jpg" class="card-img-top" alt="App">
+          <img src="https://images.unsplash.com/photo-1581090464777-f3220e4f3f51?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="App">
           <div class="card-body">
-            <h5 class="card-title">SC Edge app - Exclusive</h5>
-            <p class="card-text">One app for travel, dining, etc.</p>
+            <h5 class="card-title">SC Edge app – Exclusive for salary accounts</h5>
+            <p class="card-text">One app for travel, dining, recharges, bill pay & managing expenses. Know more.</p>
           </div>
         </div>
       </div>
+
+      <!-- Card 5 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="images/cashback.jpg" class="card-img-top" alt="Cashback">
+          <img src="https://images.unsplash.com/photo-1581579185169-cdb709c5b798?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Cashback">
           <div class="card-body">
             <h5 class="card-title">Get 5% cashback at supermarket</h5>
-            <p class="card-text">With Manhattan credit card.</p>
+            <p class="card-text">With Manhattan Platinum credit card.</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
 </body>
 </html>
