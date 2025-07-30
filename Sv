@@ -110,3 +110,73 @@
   <p>Your form has been submitted successfully!</p>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Form</title>
+</head>
+<body>
+  <h2>User Registration Form</h2>
+  <form action="welcome.html" method="post">
+    <label>First Name: <input type="text" name="fname" required pattern="[A-Za-z]+" placeholder="Please enter your first name"></label><br><br>
+    
+    <label>Last Name: <input type="text" name="lname" required pattern="[A-Za-z]+" placeholder="Please enter your last name"></label><br><br>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Others"> Others
+    <br><br>
+
+    <label>Languages known:</label>
+    <input type="checkbox" name="lang" value="HTML"> HTML
+    <input type="checkbox" name="lang" value="CSS"> CSS
+    <input type="checkbox" name="lang" value="JS"> JS
+    <br><br>
+
+    <label>Address: <textarea name="address" rows="3" cols="30"></textarea></label><br><br>
+
+    <label>States: 
+      <select multiple>
+        <option>Bangalore</option>
+        <option>Mysore</option>
+        <option>Kerala</option>
+      </select>
+    </label><br><br>
+
+    <label>Cities lived in: <input type="text" name="city" value="Chennai"></label><br><br>
+
+    <label>Contact Number: <input type="tel" name="contact" pattern="[0-9]{10}" required></label><br><br>
+
+    <label><input type="color"> My favorite color is:</label><br><br>
+
+    <label>Date is: <input type="date"></label><br><br>
+    <label>Birthday is: <input type="date"></label><br><br>
+    <label>Time is: <input type="time"></label><br><br>
+    <label>Week is: <input type="week"></label><br><br>
+    <label>Month is: <input type="month"></label><br><br>
+
+    <label>Email id is: <input type="email" name="email" required></label><br><br>
+
+    <button type="button">Click Me</button>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>
+
