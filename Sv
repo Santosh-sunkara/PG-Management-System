@@ -1,95 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>User Registration</title>
+  <title>Standard Chartered UI</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-  <h2>User Registration Form</h2>
-
-  <form action="welcome.html" method="GET" onsubmit="return validateForm()">
-    
-    <label>First Name:
-      <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z]+" placeholder="Please enter your first name">
-    </label><br><br>
-
-    <label>Last Name:
-      <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z]+" placeholder="Please enter your last name">
-    </label><br><br>
-
-    <label>Gender:
-      <input type="radio" name="gender" value="Male" required> Male
-      <input type="radio" name="gender" value="Female"> Female
-      <input type="radio" name="gender" value="Others"> Others
-    </label><br><br>
-
-    <label>Languages known:
-      <input type="checkbox" name="lang" value="HTML"> HTML
-      <input type="checkbox" name="lang" value="CSS"> CSS
-      <input type="checkbox" name="lang" value="JS"> JS
-    </label><br><br>
-
-    <label>Address:
-      <textarea name="address" required></textarea>
-    </label><br><br>
-
-    <label>Cities lived in:
-      <select name="city" required>
-        <option value="">Select</option>
-        <option value="Bangalore">Bangalore</option>
-        <option value="Mysore">Mysore</option>
-        <option value="Kerala">Kerala</option>
-        <option value="Chennai">Chennai</option>
-      </select>
-    </label><br><br>
-
-    <label>Contact Number:
-      <input type="text" name="contact" id="contact" required pattern="\d{10}" placeholder="10-digit number">
-    </label><br><br>
-
-    <label>My favorite color is:
-      <input type="color" name="favColor">
-    </label><br><br>
-
-    <label>Date:
-      <input type="text" name="date" placeholder="mm/dd/yyyy" required>
-    </label><br><br>
-
-    <label>Birthday:
-      <input type="text" name="birthday" placeholder="mm/dd/yyyy" required>
-    </label><br><br>
-
-    <label>Time:
-      <input type="text" name="time" placeholder="--:-- --" required>
-    </label><br><br>
-
-    <label>Week:
-      <input type="text" name="week" placeholder="Week --">
-    </label><br><br>
-
-    <label>Month:
-      <input type="text" name="month" placeholder="---- ----">
-    </label><br><br>
-
-    <label>Email ID:
-      <input type="email" name="email" required>
-    </label><br><br>
-
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-    <button type="button" onclick="alert('Clicked!')">Click Me</button>
-
-  </form>
-
-  <script>
-    function validateForm() {
-      const contact = document.getElementById('contact').value;
-      if (!/^\d{10}$/.test(contact)) {
-        alert("Contact number must be 10 digits.");
-        return false;
-      }
-      return true;
-    }
-  </script>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Welcome to Standard Chartered</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="elephant.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Combating the illegal wildlife trade</h5>
+            <p class="card-text">See how we work with partners...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="nri.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Invest like you never left India</h5>
+            <p class="card-text">Invest on-the-go with NRI Banking.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat more cards here -->
+    </div>
+  </div>
 </body>
 </html>
