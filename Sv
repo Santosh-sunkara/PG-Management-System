@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Standard Chartered UI</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Welcome to Standard Chartered</h1>
-    <div class="row">
+    <h1 class="text-center mb-5">Welcome to Standard Chartered</h1>
+    <div class="row g-4">
       <div class="col-md-4">
         <div class="card">
-          <img src="elephant.jpg" class="card-img-top" alt="...">
+          <img src="images/elephant.jpg" class="card-img-top" alt="Wildlife">
           <div class="card-body">
             <h5 class="card-title">Combating the illegal wildlife trade</h5>
             <p class="card-text">See how we work with partners...</p>
@@ -19,14 +20,40 @@
       </div>
       <div class="col-md-4">
         <div class="card">
-          <img src="nri.jpg" class="card-img-top" alt="...">
+          <img src="images/nri.jpg" class="card-img-top" alt="NRI Banking">
           <div class="card-body">
             <h5 class="card-title">Invest like you never left India</h5>
             <p class="card-text">Invest on-the-go with NRI Banking.</p>
           </div>
         </div>
       </div>
-      <!-- Repeat more cards here -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="images/world.jpg" class="card-img-top" alt="Travel">
+          <div class="card-body">
+            <h5 class="card-title">Explore the world like a local</h5>
+            <p class="card-text">Load up to 20 currencies...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="images/app.jpg" class="card-img-top" alt="App">
+          <div class="card-body">
+            <h5 class="card-title">SC Edge app - Exclusive</h5>
+            <p class="card-text">One app for travel, dining, etc.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="images/cashback.jpg" class="card-img-top" alt="Cashback">
+          <div class="card-body">
+            <h5 class="card-title">Get 5% cashback at supermarket</h5>
+            <p class="card-text">With Manhattan credit card.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
