@@ -1,55 +1,76 @@
-<div class="container mt-5">
-  <div class="row row-cols-1 row-cols-md-5 g-4">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Standard Chartered UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
 
-    <div class="col">
-      <div class="card">
-        <img src="https://picsum.photos/300/200?random=1" class="card-img-top" alt="Wildlife">
-        <div class="card-body">
-          <h5 class="card-title">Combating the illegal wildlife trade</h5>
-          <p class="card-text">See how we work with partners to fight money laundering.</p>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Welcome to Standard Chartered</h2>
+    
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/id/1011/300/200" class="card-img-top" alt="Wildlife">
+          <div class="card-body">
+            <h5 class="card-title">Combating the illegal wildlife trade</h5>
+            <p class="card-text">See how we work with partners to fight money laundering and the illegal wildlife trade.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col">
-      <div class="card">
-        <img src="https://picsum.photos/300/200?random=2" class="card-img-top" alt="NRI">
-        <div class="card-body">
-          <h5 class="card-title">Invest like you never left India</h5>
-          <p class="card-text">Invest on-the-go with NRI Banking.</p>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/id/1025/300/200" class="card-img-top" alt="NRI">
+          <div class="card-body">
+            <h5 class="card-title">Invest like you never left India</h5>
+            <p class="card-text">Invest on-the-go with NRI Banking.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col">
-      <div class="card">
-        <img src="https://picsum.photos/300/200?random=3" class="card-img-top" alt="Travel">
-        <div class="card-body">
-          <h5 class="card-title">Explore the world like a local</h5>
-          <p class="card-text">Multi-Currency Forex card. Apply now.</p>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/id/1035/300/200" class="card-img-top" alt="Travel">
+          <div class="card-body">
+            <h5 class="card-title">Explore the world like a local #PayLikeALocal</h5>
+            <p class="card-text">Load up to 20 currencies on the Multi-Currency Forex card. Apply now.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col">
-      <div class="card">
-        <img src="https://picsum.photos/300/200?random=4" class="card-img-top" alt="App">
-        <div class="card-body">
-          <h5 class="card-title">SC Edge App</h5>
-          <p class="card-text">One app for expenses, travel, bills and more.</p>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/id/1050/300/200" class="card-img-top" alt="App">
+          <div class="card-body">
+            <h5 class="card-title">SC Edge app – Exclusive for salary accounts</h5>
+            <p class="card-text">One app for travel, dining, recharges, bill pay & managing expenses.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col">
-      <div class="card">
-        <img src="https://picsum.photos/300/200?random=5" class="card-img-top" alt="Cashback">
-        <div class="card-body">
-          <h5 class="card-title">5% Cashback at Supermarket</h5>
-          <p class="card-text">With Manhattan Platinum card.</p>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/id/1062/300/200" class="card-img-top" alt="Cashback">
+          <div class="card-body">
+            <h5 class="card-title">Get 5% cashback at supermarket</h5>
+            <p class="card-text">With Manhattan Platinum credit card.</p>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
-</div>
+
+</body>
+</html>
