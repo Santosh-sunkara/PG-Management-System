@@ -2,145 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Registration Form</title>
+  <title>User Registration</title>
 </head>
 <body>
   <h2>User Registration Form</h2>
-  <form action="welcome.html" method="GET" onsubmit="return validateForm()">
-    <label>First Name:
-      <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z]+" placeholder="Enter first name">
-    </label><br><br>
 
-    <label>Last Name:
-      <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z]+" placeholder="Enter last name">
-    </label><br><br>
-
-    <label>Gender:
-      <input type="radio" name="gender" value="Male" required> Male
-      <input type="radio" name="gender" value="Female"> Female
-      <input type="radio" name="gender" value="Others"> Others
-    </label><br><br>
-
-    <label>Languages known:
-      <input type="checkbox" name="lang" value="HTML"> HTML
-      <input type="checkbox" name="lang" value="CSS"> CSS
-      <input type="checkbox" name="lang" value="JS"> JS
-    </label><br><br>
-
-    <label>Address:
-      <textarea name="address" required></textarea>
-    </label><br><br>
-
-    <label>Cities lived in:
-      <select name="city" required>
-        <option value="">Select</option>
-        <option value="Bangalore">Bangalore</option>
-        <option value="Mysore">Mysore</option>
-        <option value="Kerala">Kerala</option>
-      </select>
-    </label><br><br>
-
-    <label>Contact Number:
-      <input type="text" name="contact" id="contact" required pattern="\d{10}" placeholder="10-digit number">
-    </label><br><br>
-
-    <label>My favorite color is:
-      <input type="color" name="favColor">
-    </label><br><br>
-
-    <label>Date:
-      <input type="date" name="date" required>
-    </label><br><br>
-
-    <label>Birthday:
-      <input type="date" name="birthday" required>
-    </label><br><br>
-
-    <label>Time:
-      <input type="time" name="time" required>
-    </label><br><br>
-
-    <label>Week:
-      <input type="week" name="week">
-    </label><br><br>
-
-    <label>Month:
-      <input type="month" name="month">
-    </label><br><br>
-
-    <label>Email ID:
-      <input type="email" name="email" required>
-    </label><br><br>
-
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-  </form>
-
-  <script>
-    function validateForm() {
-      const contact = document.getElementById('contact').value;
-      if (!/^\d{10}$/.test(contact)) {
-        alert("Contact number must be 10 digits.");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Welcome</title>
-</head>
-<body>
-  <h1>Welcome User</h1>
-  <p>Your form has been submitted successfully!</p>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Registration Form</title>
-</head>
-<body>
-  <h2>User Registration Form</h2>
   <form action="welcome.html" method="GET" onsubmit="return validateForm()">
     
     <label>First Name:
-      <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z]+" placeholder="Enter first name">
+      <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z]+" placeholder="Please enter your first name">
     </label><br><br>
 
     <label>Last Name:
-      <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z]+" placeholder="Enter last name">
+      <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z]+" placeholder="Please enter your last name">
     </label><br><br>
 
     <label>Gender:
@@ -165,6 +39,7 @@
         <option value="Bangalore">Bangalore</option>
         <option value="Mysore">Mysore</option>
         <option value="Kerala">Kerala</option>
+        <option value="Chennai">Chennai</option>
       </select>
     </label><br><br>
 
@@ -176,25 +51,24 @@
       <input type="color" name="favColor">
     </label><br><br>
 
-    <!-- Changed input types from date/time/week/month to text -->
     <label>Date:
-      <input type="text" name="date" placeholder="Enter date" required>
+      <input type="text" name="date" placeholder="mm/dd/yyyy" required>
     </label><br><br>
 
     <label>Birthday:
-      <input type="text" name="birthday" placeholder="Enter birthday" required>
+      <input type="text" name="birthday" placeholder="mm/dd/yyyy" required>
     </label><br><br>
 
     <label>Time:
-      <input type="text" name="time" placeholder="Enter time" required>
+      <input type="text" name="time" placeholder="--:-- --" required>
     </label><br><br>
 
     <label>Week:
-      <input type="text" name="week" placeholder="Enter week">
+      <input type="text" name="week" placeholder="Week --">
     </label><br><br>
 
     <label>Month:
-      <input type="text" name="month" placeholder="Enter month">
+      <input type="text" name="month" placeholder="---- ----">
     </label><br><br>
 
     <label>Email ID:
@@ -203,6 +77,8 @@
 
     <button type="submit">Submit</button>
     <button type="reset">Reset</button>
+    <button type="button" onclick="alert('Clicked!')">Click Me</button>
+
   </form>
 
   <script>
@@ -217,4 +93,3 @@
   </script>
 </body>
 </html>
-
