@@ -9,7 +9,7 @@
   <style>
     body {
       padding-top: 80px;
-      background-image: url('https://images.unsplash.com/photo-1521790797524-b2497295b8c9?auto=format&fit=crop&w=1400&q=80');
+      background-image: url('images/techandall_wallpaper_1.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -94,7 +94,7 @@
       <!-- Travel -->
       <div class="col">
         <div class="card h-100">
-          <img src="images/download (2).jfif" class="card-img-top" alt="Travel" />
+          <img src="images/nepal-everest-base-camp-everest-travel-photo-20190128094442660-main-image.jpg" class="card-img-top" alt="Travel" />
           <div class="card-body">
             <h6 class="card-title">Travel</h6>
             <p class="card-text">Explore the world like a local</p>
@@ -116,7 +116,7 @@
       <!-- Cashback -->
       <div class="col">
         <div class="card h-100">
-          <img src="https://source.unsplash.com/200x150/?cashback,shopping" class="card-img-top" alt="Cashback" />
+          <img src="images/download (4).jfif" class="card-img-top" alt="Cashback" />
           <div class="card-body">
             <h6 class="card-title">Cashback</h6>
             <p class="card-text">Get 5% cashback at supermarket</p>
