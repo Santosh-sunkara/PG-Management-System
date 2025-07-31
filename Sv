@@ -1,9 +1,25 @@
-let words = ['stAndaRD', 'chArTed', 'BanK'];
-
-function toUpper(word) {
-    return word.toUpperCase();
+// Function to display the Fibonacci series for 10 numbers
+function printFibonacci(n) {
+    let a = 0, b = 1;
+    console.log("Fibonacci Series:");
+    console.log(a);
+    console.log(b);
+    for (let i = 2; i < n; i++) {
+        let next = a + b;
+        console.log(next);
+        a = b;
+        b = next;
+    }
 }
 
-let result = words.map(toUpper);
+// Function to display the table of 8
+function printTableOf8() {
+    console.log("Table of 8:");
+    for (let i = 1; i <= 10; i++) {
+        console.log(`8 x ${i} = ${8 * i}`);
+    }
+}
 
-console.log(result);
+// Call both functions
+printFibonacci(10);
+printTableOf8();
