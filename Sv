@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JS in HTML Example</title>
-        <script src="inputexample.js"></script>
-    </head>
-    <body>
-       
-    </body>
-</html>
- 
-//Input Example
-var userInput = prompt("Enter a number:");
-console.log("You entered:", userInput);
- 
+let words = ['stAndaRD', 'chArTed', 'BanK'];
+
+function toUpper(word) {
+    return word.toUpperCase();
+}
+
+let result = words.map(toUpper);
+
+console.log(result);
