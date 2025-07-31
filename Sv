@@ -30,32 +30,47 @@
       height: 150px;
       object-fit: cover;
     }
+    .navbar-brand-text {
+      display: none;
+    }
+    .search-bar {
+      max-width: 250px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="images/download.png" alt="Standard Chartered Logo" height="30" class="me-2" />
-        <strong>Standard Chartered</strong>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-2">
+    <div class="container-fluid px-4">
+      <!-- Logo Only -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/download.png" alt="Standard Chartered Logo" height="30" />
       </a>
+
+      <!-- Toggler for mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- Navbar Items -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#">You're in India</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Our Products</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Promotions</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-          <li class="nav-item">
-            <a class="btn btn-success ms-2" href="#">Login</a>
-          </li>
         </ul>
+
+        <!-- Search Bar -->
+        <form class="d-flex me-3">
+          <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" />
+        </form>
+
+        <!-- Login Button -->
+        <a class="btn btn-success" href="#">Login</a>
       </div>
     </div>
   </nav>
