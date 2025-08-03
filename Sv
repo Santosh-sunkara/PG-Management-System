@@ -1,42 +1,163 @@
-let counter = 2;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testimonials - Axess Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-function addTestimonial() {
-  const name = document.getElementById("nameInput").value;
-  const message = document.getElementById("messageInput").value;
-  if (!name || !message) {
-    alert("Please fill out both fields.");
-    return;
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  const testimonialDiv = document.createElement("div");
-  const id = `test${counter++}`;
-  testimonialDiv.className = "testimonial";
-  testimonialDiv.id = id;
-  testimonialDiv.innerHTML = `
-    <p><strong>${name}</strong></p>
-    <p>${message}</p>
-    <div class="actions">
-      <button class="edit-btn" onclick="editTestimonial('${id}')">Edit</button>
-      <button class="delete-btn" onclick="deleteTestimonial('${id}')">Delete</button>
+    h2 {
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #27ae60;
+    }
+
+    #testimonials h3 {
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .testimonial {
+      background-color: #fff;
+      border-left: 4px solid #2ecc71;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .testimonial strong {
+      color: #2c3e50;
+    }
+
+    .actions {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 5px;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-btn:hover,
+    .delete-btn:hover {
+      background-color: #27ae60;
+    }
+
+    @media (max-width: 600px) {
+      .form-container,
+      .testimonial {
+        width: 90%;
+      }
+
+      .actions {
+        top: auto;
+        bottom: 15px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Presenting the Use Case</h2>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="nameInput">Name</label>
+      <input type="text" id="nameInput" placeholder="Enter your name">
     </div>
-  `;
 
-  document.getElementById("testimonials").appendChild(testimonialDiv);
+    <div class="form-group">
+      <label for="messageInput">Message</label>
+      <textarea id="messageInput" rows="4" placeholder="Enter your message"></textarea>
+    </div>
 
-  document.getElementById("nameInput").value = "";
-  document.getElementById("messageInput").value = "";
-}
+    <button class="submit-btn" onclick="addTestimonial()">Submit</button>
+  </div>
 
-function deleteTestimonial(id) {
-  document.getElementById(id).remove();
-}
+  <div id="testimonials">
+    <h3>Testimonials</h3>
+    <div class="testimonial" id="test1">
+      <p><strong>Ritu</strong></p>
+      <p>It has been a positive experience with personable banking service in a timely manner</p>
+      <div class="actions">
+        <button class="edit-btn" onclick="editTestimonial('test1')">Edit</button>
+        <button class="delete-btn" onclick="deleteTestimonial('test1')">Delete</button>
+      </div>
+    </div>
+  </div>
 
-function editTestimonial(id) {
-  const testimonial = document.getElementById(id);
-  const name = testimonial.querySelector("strong").innerText;
-  const message = testimonial.querySelectorAll("p")[1].innerText;
-
-  document.getElementById("nameInput").value = name;
-  document.getElementById("messageInput").value = message;
-  testimonial.remove();
-}
+  <script src="script.js"></script>
+</body>
+</html>
