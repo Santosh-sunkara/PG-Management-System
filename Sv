@@ -3,16 +3,20 @@ let counter = 2;
 function addTestimonial() {
   const name = document.getElementById("nameInput").value.trim();
   const message = document.getElementById("messageInput").value.trim();
+
   if (!name || !message) {
     alert("Please fill out both fields.");
     return;
   }
 
-  const testimonialDiv = document.createElement("div");
+  const testimonialsContainer = document.getElementById("testimonials");
+
+  const newDiv = document.createElement("div");
   const id = `test${counter++}`;
-  testimonialDiv.className = "testimonial";
-  testimonialDiv.id = id;
-  testimonialDiv.innerHTML = `
+  newDiv.className = "testimonial";
+  newDiv.id = id;
+
+  newDiv.innerHTML = `
     <p><strong>${name}</strong></p>
     <p>${message}</p>
     <div class="actions">
@@ -21,14 +25,16 @@ function addTestimonial() {
     </div>
   `;
 
-  document.getElementById("testimonials").appendChild(testimonialDiv);
+  testimonialsContainer.appendChild(newDiv);
 
+  // Clear the form
   document.getElementById("nameInput").value = "";
   document.getElementById("messageInput").value = "";
 }
 
 function deleteTestimonial(id) {
-  document.getElementById(id).remove();
+  const el = document.getElementById(id);
+  if (el) el.remove();
 }
 
 function editTestimonial(id) {
@@ -38,5 +44,6 @@ function editTestimonial(id) {
 
   document.getElementById("nameInput").value = name;
   document.getElementById("messageInput").value = message;
+
   testimonial.remove();
 }
