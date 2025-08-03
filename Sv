@@ -13,7 +13,10 @@
 
   <style>
     body {
-      background: linear-gradient(to right, #b0c4b1, #0f4c75);
+      background: 
+        linear-gradient(rgba(176, 196, 177, 0.85), rgba(15, 76, 117, 0.85)),
+        url('images/walpaper.jpg') no-repeat center center;
+      background-size: cover;
       font-family: 'Segoe UI', sans-serif;
     }
 
