@@ -15,7 +15,7 @@
     body {
       background: 
         linear-gradient(rgba(176, 196, 177, 0.85), rgba(15, 76, 117, 0.85)),
-        url('images/subtle-cinematics-KEI-VNDi0_g-unsplash.jpg');
+        url('../images/walpaper.jpg') no-repeat center center;
       background-size: cover;
       font-family: 'Segoe UI', sans-serif;
     }
