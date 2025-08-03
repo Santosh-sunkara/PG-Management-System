@@ -172,3 +172,16 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+bootstrapproj\src\images\techandall_wallpaper_1.jpg
+
