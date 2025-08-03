@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Testimonials</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-image: url('../images/techandall_wallpaper_1.jpg');
+      background-image: url("../images/techandall_wallpaper_1.jpg");
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: center;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
+      background-attachment: fixed;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 50px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
     .testimonial-wrapper {
-      min-height: 100px;
+      min-height: 150px;
       padding: 20px;
+      margin-top: 40px;
       background-color: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
-      width: 80%;
-      margin: auto;
     }
 
     .card {
-      border: none;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      margin-left: 5px;
     }
   </style>
 </head>
 <body>
-  <div class="container py-5">
-    <h2 class="text-center mb-4 text-white">Presenting the Use Case</h2>
-    <div class="card p-4 shadow-lg">
-      <form id="testimonial-form">
+  <div class="container">
+    <h3 class="text-center mt-4">Presenting the Use Case</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6 form-container">
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" class="form-control" placeholder="Enter your name" required />
+          <label for="name" class="form-label"><strong>Name</strong></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name">
         </div>
         <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea id="message" class="form-control" rows="3" placeholder="Enter your message" required></textarea>
+          <label for="message" class="form-label"><strong>Message</strong></label>
+          <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
         </div>
-        <button type="submit" class="btn btn-success w-100">Submit</button>
-      </form>
+        <button class="btn btn-success w-100" onclick="addTestimonial()">Submit</button>
+      </div>
     </div>
 
-    <h3 class="text-center mt-5 text-white">Testimonials</h3>
-    <div id="testimonials-container" class="testimonial-wrapper mt-3">
-      <div class="card p-3 mb-2 shadow-sm">
-        <h5>Ritu</h5>
-        <p>It has been a positive experience with personable banking service in a timely manner</p>
-        <button class="btn btn-sm btn-success me-2" onclick="editTestimonial(this)">Edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
+    <div class="text-center mt-5">
+      <h4 class="p-2 bg-light rounded w-50 mx-auto">Testimonials</h4>
+    </div>
+
+    <div id="testimonials-container" class="testimonial-wrapper">
+      <!-- Default testimonial -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ritu</h5>
+          <p class="card-text">It has been a positive experience with personable banking service in a timely manner</p>
+          <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="assignment-3.js"></script>
 </body>
 </html>
