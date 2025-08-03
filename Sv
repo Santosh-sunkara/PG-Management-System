@@ -1,109 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Testimonials - Axess Academy</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-    }
+let counter = 2;
 
-    h2 {
-      color: #333;
-    }
+function addTestimonial() {
+  const name = document.getElementById("nameInput").value;
+  const message = document.getElementById("messageInput").value;
+  if (!name || !message) {
+    alert("Please fill out both fields.");
+    return;
+  }
 
-    .form-container {
-      border: 1px solid #ccc;
-      padding: 20px;
-      background: #fff;
-      width: 400px;
-    }
-
-    input, textarea {
-      width: 95%;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .label {
-      display: inline-block;
-      width: 60px;
-      font-weight: bold;
-      background-color: #2a9fd6;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .submit-btn {
-      background-color: #2ecc71;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .testimonial {
-      border: 1px solid #ccc;
-      background: #fff;
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      width: 400px;
-      position: relative;
-    }
-
-    .testimonial p {
-      margin: 5px 0;
-    }
-
-    .actions {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-    }
-
-    .edit-btn, .delete-btn {
-      background-color: #2ecc71;
-      color: white;
-      border: none;
-      margin-left: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <h2>Presenting the Use Case</h2>
-
-  <div class="form-container">
-    <div>
-      <span class="label">Name</span>
-      <input type="text" id="nameInput" placeholder="Your Name">
+  const testimonialDiv = document.createElement("div");
+  const id = `test${counter++}`;
+  testimonialDiv.className = "testimonial";
+  testimonialDiv.id = id;
+  testimonialDiv.innerHTML = `
+    <p><strong>${name}</strong></p>
+    <p>${message}</p>
+    <div class="actions">
+      <button class="edit-btn" onclick="editTestimonial('${id}')">Edit</button>
+      <button class="delete-btn" onclick="deleteTestimonial('${id}')">Delete</button>
     </div>
-    <div>
-      <span class="label">Message</span>
-      <textarea id="messageInput" placeholder="Enter your Message"></textarea>
-    </div>
-    <button class="submit-btn" onclick="addTestimonial()">Submit</button>
-  </div>
+  `;
 
-  <div id="testimonials">
-    <h3>Testimonials</h3>
-    <div class="testimonial" id="test1">
-      <p><strong>Ritu</strong></p>
-      <p>It has been a positive experience with personable banking service in a timely manner</p>
-      <div class="actions">
-        <button class="edit-btn" onclick="editTestimonial('test1')">Edit</button>
-        <button class="delete-btn" onclick="deleteTestimonial('test1')">Delete</button>
-      </div>
-    </div>
-  </div>
+  document.getElementById("testimonials").appendChild(testimonialDiv);
 
-  <script src="script.js"></script>
-</body>
-</html>
+  document.getElementById("nameInput").value = "";
+  document.getElementById("messageInput").value = "";
+}
+
+function deleteTestimonial(id) {
+  document.getElementById(id).remove();
+}
+
+function editTestimonial(id) {
+  const testimonial = document.getElementById(id);
+  const name = testimonial.querySelector("strong").innerText;
+  const message = testimonial.querySelectorAll("p")[1].innerText;
+
+  document.getElementById("nameInput").value = name;
+  document.getElementById("messageInput").value = message;
+  testimonial.remove();
+}
