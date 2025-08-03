@@ -1,115 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Testimonials</title>
+function addTestimonial() {
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  <!-- Bootstrap 5 (for quick spacing & buttons) -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  if (!name || !message) return alert("Please enter both name and message.");
 
-  <style>
-    /* ----------  GLOBAL  ---------- */
-    body {
-      background: url("../images/techandall_wallpaper_1.jpg") center/cover
-        no-repeat fixed;
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+  const container = document.getElementById("testimonials-container");
 
-    /* ----------  FORM  ---------- */
-    .form-container {
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      padding: 30px;
-      margin: 60px auto 40px;
-      max-width: 600px;       /* 🚩 same width as testimonial block */
-      width: 90%;
-    }
+  const card = document.createElement("div");
+  card.className = "card mb-3";
 
-    /* ----------  TESTIMONIAL BLOCK  ---------- */
-    .testimonial-section {
-      /* wrapper that holds title + cards */
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-      max-width: 600px;       /* 🚩 unified width */
-      width: 90%;
-      margin: 0 auto 60px;
-      padding: 20px 24px 10px;
-    }
-
-    .testimonial-title {
-      font-weight: 600;
-      font-size: 1.25rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    /* each testimonial card */
-    .testimonial-section .card {
-      width: 100%;            /* 🚩 full width of the wrapper */
-      margin-bottom: 15px;
-    }
-
-    .testimonial-section .card:last-child {
-      margin-bottom: 0;
-    }
-
-    .btn {
-      margin-left: 6px;
-    }
-  </style>
-</head>
-<body>
-  <!-- ----------  FORM  ---------- -->
-  <div class="form-container">
-    <div class="mb-3">
-      <label for="name" class="form-label fw-semibold">Name</label>
-      <input type="text" id="name" class="form-control" placeholder="Enter your name" />
+  card.innerHTML = `
+    <div class="card-body">
+      <h5 class="card-title">${name}</h5>
+      <p class="card-text">${message}</p>
+      <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
     </div>
+  `;
 
-    <div class="mb-3">
-      <label for="message" class="form-label fw-semibold">Message</label>
-      <textarea
-        id="message"
-        class="form-control"
-        rows="3"
-        placeholder="Enter your message"
-      ></textarea>
-    </div>
+  container.appendChild(card);
+  document.getElementById("name").value = "";
+  document.getElementById("message").value = "";
+}
 
-    <button class="btn btn-success w-100" onclick="addTestimonial()">Submit</button>
-  </div>
+function deleteTestimonial(button) {
+  const card = button.closest(".card");
+  card.remove();
+}
 
-  <!-- ----------  TESTIMONIALS  ---------- -->
-  <section id="testimonials-section" class="testimonial-section">
-    <div class="testimonial-title">Testimonials</div>
+function editTestimonial(button) {
+  const cardBody = button.closest(".card-body");
+  const nameEl = cardBody.querySelector(".card-title");
+  const msgEl = cardBody.querySelector(".card-text");
 
-    <div id="testimonials-container">
-      <!-- default card -->
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Ritu</h5>
-          <p class="card-text">
-            It has been a positive experience with personable banking service
-            in a timely manner
-          </p>
-          <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">
-            Edit
-          </button>
-          <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+  const originalName = nameEl.textContent;
+  const originalMsg = msgEl.textContent;
 
-  <!-- ----------  JS  ---------- -->
-  <script src="assignment-3.js"></script>
-</body>
-</html>
+  // Replace with input fields
+  cardBody.innerHTML = `
+    <input type="text" class="form-control mb-2" id="edit-name" value="${originalName}" />
+    <textarea class="form-control mb-2" id="edit-msg">${originalMsg}</textarea>
+    <button class="btn btn-sm btn-primary" onclick="saveEdit(this)">Save</button>
+    <button class="btn btn-sm btn-secondary" onclick="cancelEdit(this, '${originalName}', \`${originalMsg}\`)">Cancel</button>
+  `;
+}
+
+function saveEdit(button) {
+  const cardBody = button.closest(".card-body");
+  const newName = cardBody.querySelector("#edit-name").value.trim();
+  const newMsg = cardBody.querySelector("#edit-msg").value.trim();
+
+  if (!newName || !newMsg) return alert("Both fields are required.");
+
+  cardBody.innerHTML = `
+    <h5 class="card-title">${newName}</h5>
+    <p class="card-text">${newMsg}</p>
+    <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
+    <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
+  `;
+}
+
+function cancelEdit(button, name, message) {
+  const cardBody = button.closest(".card-body");
+
+  cardBody.innerHTML = `
+    <h5 class="card-title">${name}</h5>
+    <p class="card-text">${message}</p>
+    <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
+    <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
+  `;
+}
