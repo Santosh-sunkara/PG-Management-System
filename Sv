@@ -1,33 +1,60 @@
-(() => {
-    'use strict'
-    const form = document.getElementById('userForm');
-    const tableBody = document.querySelector('#entriesTable tbody');
-  
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      event.stopPropagation();
-  
-      if (form.checkValidity()) {
-        const firstName = document.getElementById('validationCustom01').value;
-        const lastName = document.getElementById('validationCustom02').value;
-        const username = document.getElementById('validationCustomUsername').value;
-        const email = document.getElementById('validationCustom03').value;
-        const accountType = document.getElementById('validationCustom04').value;
-  
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-          <td>${firstName}</td>
-          <td>${lastName}</td>
-          <td>${username}</td>
-          <td>${email}</td>
-          <td>${accountType}</td>
-        `;
-        tableBody.appendChild(newRow);
-  
-        form.reset();
-        form.classList.remove('was-validated');
-      } else {
-        form.classList.add('was-validated');
-      }
-    }, false);
-  })();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimonials</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-image: url(""); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .testimonial-box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-actions button {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h4 class="mb-3">Submit a Testimonial</h4>
+    <div class="mb-3">
+      <label for="nameInput" class="form-label">Name</label>
+      <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" />
+    </div>
+    <div class="mb-3">
+      <label for="messageInput" class="form-label">Message</label>
+      <textarea id="messageInput" class="form-control" placeholder="Enter your message"></textarea>
+    </div>
+    <button onclick="addTestimonial()" class="btn btn-success">Submit</button>
+  </div>
+
+  <div class="container mt-4">
+    <h4 class="text-center mb-3">Testimonials</h4>
+    <div id="testimonials-container"></div>
+  </div>
+
+  <script src="assignment-3.js"></script>
+</body>
+</html>
