@@ -1,1 +1,90 @@
-https://teams.microsoft.com/l/meetup-join/19%3ameeting_NThjZDQ2YjMtYzMzZi00YzQ1LWI5MWUtNGVhMjEyZTdjNmRh%40thread.v2/0?context=%7b%22Tid%22%3a%22b44900f1-2def-4c3b-9ec6-9020d604e19e%22%2c%22Oid%22%3a%22ca4a36dd-094c-424d-bef3-9107380ad3db%22%7d
+function addTestimonial() {
+  const name = document.getElementById("nameInput").value.trim();
+  const message = document.getElementById("messageInput").value.trim();
+
+  if (!name || !message) {
+    alert("Please enter both name and message.");
+    return;
+  }
+
+  const testimonialContainer = document.getElementById("testimonials-container");
+
+  const card = document.createElement("div");
+  card.className = "testimonial-box";
+
+  const nameElement = document.createElement("h5");
+  nameElement.className = "fw-bold";
+  nameElement.innerText = name;
+
+  const messageElement = document.createElement("p");
+  messageElement.innerText = message;
+
+  const editBtn = document.createElement("button");
+  editBtn.className = "btn btn-sm btn-success";
+  editBtn.innerText = "Edit";
+  editBtn.onclick = function () {
+    // Replace content with editable inputs
+    const nameInput = document.createElement("input");
+    nameInput.className = "form-control mb-2";
+    nameInput.value = nameElement.innerText;
+
+    const messageInput = document.createElement("textarea");
+    messageInput.className = "form-control mb-2";
+    messageInput.value = messageElement.innerText;
+
+    const saveBtn = document.createElement("button");
+    saveBtn.className = "btn btn-primary btn-sm me-2";
+    saveBtn.innerText = "Save";
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.className = "btn btn-secondary btn-sm";
+    cancelBtn.innerText = "Cancel";
+
+    // Clear current content
+    card.innerHTML = "";
+    card.appendChild(nameInput);
+    card.appendChild(messageInput);
+    card.appendChild(saveBtn);
+    card.appendChild(cancelBtn);
+
+    saveBtn.onclick = function () {
+      nameElement.innerText = nameInput.value.trim();
+      messageElement.innerText = messageInput.value.trim();
+      redraw();
+    };
+
+    cancelBtn.onclick = function () {
+      redraw();
+    };
+
+    function redraw() {
+      card.innerHTML = "";
+      card.appendChild(nameElement);
+      card.appendChild(messageElement);
+      card.appendChild(actionsDiv);
+    }
+  };
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "btn btn-sm btn-danger";
+  deleteBtn.innerText = "Delete";
+  deleteBtn.onclick = function () {
+    testimonialContainer.removeChild(card);
+  };
+
+  const actionsDiv = document.createElement("div");
+  actionsDiv.className = "testimonial-actions mt-2";
+  actionsDiv.appendChild(editBtn);
+  actionsDiv.appendChild(deleteBtn);
+
+  card.appendChild(nameElement);
+  card.appendChild(messageElement);
+  card.appendChild(actionsDiv);
+
+  testimonialContainer.appendChild(card);
+
+  // Reset form
+  document.getElementById("nameInput").value = "";
+  document.getElementById("messageInput").value = "";
+}
+
