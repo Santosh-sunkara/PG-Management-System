@@ -1,72 +1,60 @@
-function addTestimonial() {
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimonials</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-image: url(""); /* Add your image path here */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
 
-  if (!name || !message) return alert("Please enter both name and message.");
+    .form-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 40px auto;
+    }
 
-  const container = document.getElementById("testimonials-container");
+    .testimonial-box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-  const card = document.createElement("div");
-  card.className = "card mb-3";
+    .testimonial-actions button {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
 
-  card.innerHTML = `
-    <div class="card-body">
-      <h5 class="card-title">${name}</h5>
-      <p class="card-text">${message}</p>
-      <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
-      <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
+  <div class="form-container">
+    <h4 class="mb-3">Submit a Testimonial</h4>
+    <div class="mb-3">
+      <label for="nameInput" class="form-label">Name</label>
+      <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" />
     </div>
-  `;
+    <div class="mb-3">
+      <label for="messageInput" class="form-label">Message</label>
+      <textarea id="messageInput" class="form-control" placeholder="Enter your message"></textarea>
+    </div>
+    <button onclick="addTestimonial()" class="btn btn-success">Submit</button>
+  </div>
 
-  container.appendChild(card);
-  document.getElementById("name").value = "";
-  document.getElementById("message").value = "";
-}
+  <div class="container mt-4">
+    <h4 class="text-center mb-3">Testimonials</h4>
+    <div id="testimonials-container"></div>
+  </div>
 
-function deleteTestimonial(button) {
-  const card = button.closest(".card");
-  card.remove();
-}
-
-function editTestimonial(button) {
-  const cardBody = button.closest(".card-body");
-  const nameEl = cardBody.querySelector(".card-title");
-  const msgEl = cardBody.querySelector(".card-text");
-
-  const originalName = nameEl.textContent;
-  const originalMsg = msgEl.textContent;
-
-  // Replace with input fields
-  cardBody.innerHTML = `
-    <input type="text" class="form-control mb-2" id="edit-name" value="${originalName}" />
-    <textarea class="form-control mb-2" id="edit-msg">${originalMsg}</textarea>
-    <button class="btn btn-sm btn-primary" onclick="saveEdit(this)">Save</button>
-    <button class="btn btn-sm btn-secondary" onclick="cancelEdit(this, '${originalName}', \`${originalMsg}\`)">Cancel</button>
-  `;
-}
-
-function saveEdit(button) {
-  const cardBody = button.closest(".card-body");
-  const newName = cardBody.querySelector("#edit-name").value.trim();
-  const newMsg = cardBody.querySelector("#edit-msg").value.trim();
-
-  if (!newName || !newMsg) return alert("Both fields are required.");
-
-  cardBody.innerHTML = `
-    <h5 class="card-title">${newName}</h5>
-    <p class="card-text">${newMsg}</p>
-    <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
-    <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
-  `;
-}
-
-function cancelEdit(button, name, message) {
-  const cardBody = button.closest(".card-body");
-
-  cardBody.innerHTML = `
-    <h5 class="card-title">${name}</h5>
-    <p class="card-text">${message}</p>
-    <button class="btn btn-sm btn-success" onclick="editTestimonial(this)">Edit</button>
-    <button class="btn btn-sm btn-danger" onclick="deleteTestimonial(this)">Delete</button>
-  `;
-}
+  <script src="assignment-3.js"></script>
+</body>
+</html>
