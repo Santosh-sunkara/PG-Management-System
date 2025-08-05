@@ -7,26 +7,31 @@
 
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #f4f6f8;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
     }
 
     .sc-card {
       background-color: #ffffff;
-      border-radius: 1rem;
+      border-radius: 0.75rem;
       padding: 2rem;
-      box-shadow: 0 0 20px rgba(0, 60, 60, 0.1);
-      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e1e4e8;
     }
 
     .sc-header {
       color: #007d8a;
       font-weight: 600;
+      font-size: 1.5rem;
+      border-left: 5px solid #007d8a;
+      padding-left: 10px;
     }
 
     .btn-sc {
       background-color: #007d8a;
       border-color: #007d8a;
+      transition: background-color 0.3s ease;
     }
 
     .btn-sc:hover {
@@ -37,19 +42,31 @@
     table th {
       background-color: #007d8a !important;
       color: white;
+      text-align: center;
     }
 
     .form-label {
-      font-weight: 500;
+      font-weight: 600;
+      color: #333;
     }
 
     .form-control, .form-select {
       border-radius: 0.5rem;
     }
 
+    .form-control:focus, .form-select:focus {
+      border-color: #007d8a;
+      box-shadow: 0 0 0 0.2rem rgba(0, 125, 138, 0.25);
+    }
+
     #entriesTable {
       border-radius: 0.5rem;
       overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .table th, .table td {
+      vertical-align: middle;
     }
 
     a.back-link {
@@ -61,18 +78,21 @@
     a.back-link:hover {
       text-decoration: underline;
     }
+
+    h2, h4 {
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 
 <body class="p-5">
-
   <div class="container">
     <div class="mb-4">
       <a href="assignment-1.html" class="back-link">&larr; Back to Home</a>
     </div>
 
     <div class="sc-card mb-5">
-      <h2 class="mb-4 sc-header">User Registration Form</h2>
+      <h2 class="sc-header">User Registration Form</h2>
 
       <form class="row g-3 needs-validation" id="userForm" novalidate>
         <div class="col-md-4">
@@ -80,11 +100,13 @@
           <input type="text" class="form-control" id="validationCustom01" placeholder="Enter your first name" required>
           <div class="valid-feedback">Looks good!</div>
         </div>
+
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
           <input type="text" class="form-control" id="validationCustom02" placeholder="Enter your last name" required>
           <div class="valid-feedback">Looks good!</div>
         </div>
+
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">Username</label>
           <div class="input-group has-validation">
@@ -93,11 +115,13 @@
             <div class="invalid-feedback">Please choose a username.</div>
           </div>
         </div>
+
         <div class="col-md-6">
           <label for="validationCustom03" class="form-label">Email-id</label>
           <input type="email" class="form-control" id="validationCustom03" placeholder="Enter your email" required>
           <div class="invalid-feedback">Please provide a valid email-id.</div>
         </div>
+
         <div class="col-md-3">
           <label for="validationCustom04" class="form-label">Account type</label>
           <select class="form-select" id="validationCustom04" required>
@@ -108,6 +132,7 @@
           </select>
           <div class="invalid-feedback">Please select a valid account type.</div>
         </div>
+
         <div class="col-12">
           <button class="btn btn-sc text-white px-4" type="submit">Add-Customer</button>
         </div>
@@ -115,7 +140,7 @@
     </div>
 
     <div class="sc-card">
-      <h4 class="mb-3 sc-header">Submitted Entries</h4>
+      <h4 class="sc-header">Submitted Entries</h4>
       <div class="table-responsive">
         <table class="table table-bordered table-striped" id="entriesTable">
           <thead>
