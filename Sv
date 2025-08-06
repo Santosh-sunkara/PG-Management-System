@@ -1,41 +1,69 @@
-// App.js
-import React from 'react';
-import LoginPage from './components/Loginuser';
-import HelloMessage from './components/HelloMessage';
-import Counter from './components/Counter';
-import Alert from './components/Alert';
-import HelloWorld from './components/HelloWorld';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - User Access Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">RW Toll Admin</a>
+  </nav>
+  <div class="container mt-4">
+    <h2>User Access Management</h2>
+    <form class="border p-3 bg-white rounded shadow-sm">
+      <div class="mb-3">
+        <label for="username" class="form-label">Select User</label>
+        <select id="username" class="form-select" required>
+          <option value="">-- Select User --</option>
+          <option>John Doe</option>
+          <option>Jane Smith</option>
+          <option>Rahul Kumar</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="adgroup" class="form-label">Assign AD Group</label>
+        <select id="adgroup" class="form-select" required>
+          <option value="">-- Select AD Group --</option>
+          <option>Wealth Compliance</option>
+          <option>Wealth User Admin</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Accessible Folders & Reports</label>
+        <div id="reportDetails" class="border rounded p-2 bg-light">
+          <em>Select a group to see details</em>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Assign Access</button>
+    </form>
+  </div>
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Welcome to React App</h1>
-      <LoginPage />
-      <HelloMessage />
-      <Counter />
-      <Alert />
-      <HelloWorld />
-    </div>
-  );
-}
+  <script>
+    const adgroup = document.getElementById("adgroup");
+    const reportDetails = document.getElementById("reportDetails");
 
-export default App;
-
- 
-
-
-// index.js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
+    adgroup.addEventListener("change", () => {
+      let html = "";
+      switch (adgroup.value) {
+        case "Wealth Compliance":
+          html = `
+            <strong>Folder:</strong> Compliance<br/>
+            <strong>Reports:</strong> KYC Reports, Dormant Reports, AML Reports
+          `;
+          break;
+        case "Wealth User Admin":
+          html = `
+            <strong>Folder:</strong> Global User<br/>
+            <strong>Reports:</strong> Active User, Inactive User
+          `;
+          break;
+        default:
+          html = "<em>Select a group to see details</em>";
+      }
+      reportDetails.innerHTML = html;
+    });
+  </script>
+</body>
+</html>
