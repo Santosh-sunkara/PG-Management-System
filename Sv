@@ -1,39 +1,41 @@
+// App.js
+import React from 'react';
+import LoginPage from './components/Loginuser';
 import HelloMessage from './components/HelloMessage';
 import Counter from './components/Counter';
 import Alert from './components/Alert';
 import HelloWorld from './components/HelloWorld';
- 
+
 function App() {
   return (
-    <div>
+    <div className="App">
       <h1>Welcome to React App</h1>
-      <p>Changed </p>
-      <HelloMessage/>
+      <LoginPage />
+      <HelloMessage />
       <Counter />
       <Alert />
-      <HelloWorld />    
+      <HelloWorld />
     </div>
   );
 }
+
 export default App;
+
  
 
 
-
-
-
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
- 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
- 
- 
+
