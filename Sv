@@ -1,43 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin - User Access Management</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Chartered - RW Toll Admin</title>
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f4f8;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar {
+      background-color: #003366;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .header-title {
+      color: #003366;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .btn-primary {
+      background-color: #00a862;
+      border-color: #00a862;
+    }
+    .btn-primary:hover {
+      background-color: #008f54;
+    }
+    .ad-info {
+      background-color: #e6f4ea;
+      border: 1px solid #00a862;
+    }
+    .table thead {
+      background-color: #003366;
+      color: white;
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <nav class="navbar navbar-dark bg-dark px-3">
-    <a class="navbar-brand" href="#">RW Toll Admin</a>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark px-3">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Standard_Chartered_logo.svg/2560px-Standard_Chartered_logo.svg.png" alt="Standard Chartered Logo">
+      <span>RW Toll Admin Portal</span>
+    </a>
   </nav>
-  <div class="container mt-4">
-    <h2>User Access Management</h2>
-    <form class="border p-3 bg-white rounded shadow-sm">
-      <div class="mb-3">
-        <label for="username" class="form-label">Select User</label>
-        <select id="username" class="form-select" required>
-          <option value="">-- Select User --</option>
-          <option>John Doe</option>
-          <option>Jane Smith</option>
-          <option>Rahul Kumar</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="adgroup" class="form-label">Assign AD Group</label>
-        <select id="adgroup" class="form-select" required>
-          <option value="">-- Select AD Group --</option>
-          <option>Wealth Compliance</option>
-          <option>Wealth User Admin</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Accessible Folders & Reports</label>
-        <div id="reportDetails" class="border rounded p-2 bg-light">
-          <em>Select a group to see details</em>
+
+  <div class="container my-4">
+    <h2 class="header-title mb-4">User Access Management</h2>
+    <div class="card p-4 shadow-sm">
+      <form>
+        <div class="mb-3">
+          <label for="username" class="form-label">Select User</label>
+          <select id="username" class="form-select" required>
+            <option value="">-- Select User --</option>
+            <option>John Doe</option>
+            <option>Jane Smith</option>
+            <option>Rahul Kumar</option>
+          </select>
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Assign Access</button>
-    </form>
+        <div class="mb-3">
+          <label for="adgroup" class="form-label">Assign AD Group</label>
+          <select id="adgroup" class="form-select" required>
+            <option value="">-- Select AD Group --</option>
+            <option>Wealth Compliance</option>
+            <option>Wealth User Admin</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Accessible Folders & Reports</label>
+          <div id="reportDetails" class="ad-info p-3 rounded">
+            <em>Select a group to see details</em>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Assign Access</button>
+      </form>
+    </div>
+
+    <h3 class="header-title mt-5 mb-3">Example AD Group Mapping</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>AD Group Name</th>
+          <th>Folder</th>
+          <th>Report Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wealth Compliance</td>
+          <td>Compliance</td>
+          <td>KYC Reports, Dormant Reports, AML Reports</td>
+        </tr>
+        <tr>
+          <td>Wealth User Admin</td>
+          <td>Global User</td>
+          <td>Active User, Inactive User</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
