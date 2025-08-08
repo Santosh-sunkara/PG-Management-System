@@ -1,14 +1,55 @@
-import CustomerList from './components/usecase/CustomerList';
-// import Loginuser from './components/Loginuser';
-// import HelloMessage from './components/HelloMessage';
-// import Counter from './components/Counter';
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob@example.com"
+  },
+  {
+    "id": 3,
+    "name": "Charlie Davis",
+    "email": "charlie@example.com"
+  }
+]
 
-function App() {
+
+
+
+
+
+
+
+import React from 'react';
+import customers from '../../customers.json'; // ✅ go up 2 folders to reach 'src'
+
+const CustomerList = () => {
   return (
-    <div className="App">
-      <CustomerList />
+    <div>
+      <h2>Customer List</h2>
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {customers.map((customer) => (
+            <tr key={customer.id}>
+              <td>{customer.id}</td>
+              <td>{customer.name}</td>
+              <td>{customer.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
-export default App;
+export default CustomerList;
