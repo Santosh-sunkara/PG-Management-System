@@ -1,30 +1,43 @@
 import React, { useState } from "react";
 import "./App.css";
-import logo from "./images/download.png"; // path to your logo
+import logo from "./Images/download.png"; // Correct path
 
 function App() {
-  const [otpSent, setOtpSent] = useState(false);
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
 
   const handleSendOtp = () => {
+    if (!email) {
+      alert("Please enter your email or username.");
+      return;
+    }
     setOtpSent(true);
-    alert("OTP Sent");
+    alert("OTP sent to your registered email.");
   };
 
   const handleVerify = () => {
-    alert(`OTP Entered: ${otp}`);
+    if (!otp) {
+      alert("Please enter the OTP.");
+      return;
+    }
+    alert("OTP Verified! You can now reset your password.");
   };
 
   return (
     <div className="container">
       <div className="card">
-        <div className="logo-container">
-          <img src={logo} alt="Standard Chartered" className="logo" />
-        </div>
-        <div className="profile-icon">👤</div>
+        <img src={logo} alt="Standard Chartered" className="bank-logo" />
         <h2>Forgot Password</h2>
 
-        <button className="btn btn-green" onClick={handleSendOtp}>
+        <input
+          type="text"
+          placeholder="Enter Email / Username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <button onClick={handleSendOtp} className="btn">
           Send OTP
         </button>
 
@@ -35,9 +48,8 @@ function App() {
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
-              className="input"
             />
-            <button className="btn btn-green" onClick={handleVerify}>
+            <button onClick={handleVerify} className="btn">
               Verify & Continue
             </button>
           </>
@@ -54,80 +66,59 @@ export default App;
 
 
 
-
-/* Background */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #00a859, #0072ce);
+  background-color: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-/* Center the card */
 .container {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Card box */
 .card {
-  background: #f4f4f4;
+  background: white;
   padding: 30px;
-  width: 320px;
-  border-radius: 12px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
 
-/* Logo */
-.logo-container {
-  text-align: left;
-}
-.logo {
+.bank-logo {
   width: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* Profile icon */
-.profile-icon {
-  font-size: 60px;
-  margin-bottom: 10px;
-  color: #666;
-}
-
-/* Title */
-h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Buttons */
-.btn {
-  display: block;
+input {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.btn-green {
-  background-color: #00a859; /* SCB green */
-  color: white;
-}
-
-.btn-green:hover {
-  background-color: #008f4a;
-}
-
-/* Input box */
-.input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
+  margin: 8px 0;
   border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #007e5a; /* SCB green */
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #005a43; /* Darker green */
+}
+
+h2 {
+  color: #003b71; /* SCB blue */
 }
