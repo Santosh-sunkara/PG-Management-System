@@ -2,39 +2,50 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background-color: #f8f9fa;
+  height: 100vh;
+  overflow: hidden; /* prevent scrolling */
 }
 
 .dashboard-container {
   display: flex;
+  height: 100vh; /* full screen height */
 }
 
-/* Sidebar with Standard Chartered blue */
+/* Sidebar */
 .sidebar {
-  background-color: #0055a5; /* Standard Chartered Blue */
+  display: flex;
+  flex-direction: column;
   width: 220px;
-  height: 100vh;
-  padding: 20px;
-  box-shadow: 2px 0px 8px rgba(0,0,0,0.05);
-  color: white;
+  height: 100%;
 }
 
+/* Logo section - white background */
 .logo-section {
+  background-color: white;
   text-align: center;
-  margin-bottom: 20px;
+  padding: 15px;
 }
 
 .logo {
   width: 150px;
 }
 
+/* Menu section - blue background */
+.menu-section {
+  flex: 1;
+  background-color: #0055a5; /* Standard Chartered Blue */
+  color: white;
+  padding: 20px 0;
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  padding: 12px;
-  margin-bottom: 8px;
+  padding: 12px 20px;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -47,9 +58,10 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
+  overflow-y: auto; /* if content grows too much */
 }
 
-/* Header with admin text next to logout */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -131,7 +143,7 @@ function App() {
         <div className="logo-section">
           <img src={logo} alt="Standard Chartered" className="logo" />
         </div>
-        <nav>
+        <div className="menu-section">
           <ul>
             <li>Dashboard</li>
             <li>User Management</li>
@@ -141,7 +153,7 @@ function App() {
             <li>Account</li>
             <li>Help</li>
           </ul>
-        </nav>
+        </div>
       </aside>
 
       {/* Main Content */}
