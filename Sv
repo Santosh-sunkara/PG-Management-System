@@ -1,123 +1,117 @@
-import java.util.*;
+import React, { useState } from "react";
+import "./App.css";
 
-class Customer {
-    int customerId;
-    String name;
-    String email;
-    String contact;
-    String accountType;
+function App() {
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
 
-    public Customer(int customerId, String name, String email, String contact, String accountType) {
-        this.customerId = customerId;
-        this.name = name;
-        this.email = email;
-        this.contact = contact;
-        this.accountType = accountType;
-    }
+  const handleSendOtp = () => {
+    setOtpSent(true);
+    alert("OTP sent to your registered email/phone");
+  };
+
+  const handleVerify = () => {
+    alert(`OTP Entered: ${otp}`);
+  };
+
+  return (
+    <div className="container">
+      <div className="card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Standard_Chartered.svg/1200px-Standard_Chartered.svg.png"
+          alt="logo"
+          className="logo"
+        />
+        <div className="profile-icon">👤</div>
+        <h2>Forgot Password</h2>
+
+        <button className="btn" onClick={handleSendOtp}>
+          Send OTP
+        </button>
+
+        {otpSent && (
+          <>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className="input"
+            />
+            <button className="btn" onClick={handleVerify}>
+              Verify & Continue
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
 }
 
-public class BankManagement {
-    static Scanner sc = new Scanner(System.in);
-    static List<Customer> customers = new ArrayList<>();
-    static int idCounter = 1000; // starting ID
+export default App;
 
-    public static void main(String[] args) {
-        while (true) {
-            System.out.println("\nWelcome to Standard Chartered Bank");
-            System.out.println("Please enter your choice");
-            System.out.println("1 for Add new Customer");
-            System.out.println("2 for Display Customers");
-            System.out.println("3 for Search Customer");
-            System.out.println("4 for Delete Customer");
-            System.out.println("5 for Exit the bank application");
-            System.out.print("Enter choice: ");
 
-            int choice = sc.nextInt();
-            sc.nextLine(); // consume newline
 
-            switch (choice) {
-                case 1:
-                    addCustomer();
-                    break;
-                case 2:
-                    displayCustomers();
-                    break;
-                case 3:
-                    searchCustomer();
-                    break;
-                case 4:
-                    deleteCustomer();
-                    break;
-                case 5:
-                    System.out.println("Exiting application. Goodbye!");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Try again.");
-            }
-        }
-    }
 
-    static void addCustomer() {
-        System.out.println("Please enter customer details:");
-        System.out.print("Enter name: ");
-        String name = sc.nextLine();
 
-        System.out.print("Enter email: ");
-        String email = sc.nextLine();
 
-        System.out.print("Enter contact: ");
-        String contact = sc.nextLine();
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
 
-        System.out.print("Enter account type (Savings or Current): ");
-        String accountType = sc.nextLine();
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        int newId = generateCustomerId();
-        customers.add(new Customer(newId, name, email, contact, accountType));
+.card {
+  background: #fff;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-        System.out.println("Customer added successfully with customer id " + newId);
-    }
+.logo {
+  width: 50px;
+  margin-bottom: 10px;
+}
 
-    static void displayCustomers() {
-        if (customers.isEmpty()) {
-            System.out.println("No customers found.");
-            return;
-        }
-        for (Customer c : customers) {
-            System.out.println(c.customerId + " | " + c.name + " | " + c.email + " | " + c.contact + " | " + c.accountType);
-        }
-    }
+.profile-icon {
+  font-size: 50px;
+  color: gray;
+  margin-bottom: 10px;
+}
 
-    static void searchCustomer() {
-        System.out.print("Enter Customer ID to search: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+h2 {
+  margin-bottom: 20px;
+}
 
-        for (Customer c : customers) {
-            if (c.customerId == id) {
-                System.out.println("Customer found: " + c.name + ", " + c.email + ", " + c.contact + ", " + c.accountType);
-                return;
-            }
-        }
-        System.out.println("Customer not found.");
-    }
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    static void deleteCustomer() {
-        System.out.print("Enter Customer ID to delete: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+.btn:hover {
+  background-color: #45a049;
+}
 
-        Iterator<Customer> iterator = customers.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().customerId == id) {
-                iterator.remove();
-                System.out.println("Customer deleted successfully.");
-                return;
-            }
-        }
-        System.out.println("Customer not found.");
-    }
-
-    static int generateCustomerId() {
-        return ++idCounter;
-    }
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
