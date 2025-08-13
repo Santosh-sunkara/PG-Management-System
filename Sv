@@ -1,46 +1,123 @@
-sampledata.js
-export const SAMPLE_CUSTOMERS = [
-    {
-      id: 1,
-      firstName: "Sundar",
-      lastName: "Pichai",
-      email: "sundar.pichai@google.com",
-      phone: "",
-      accounts: [
-        { accountNo: "1001999", type: "SAVINGS_ACCOUNT", branch: "Bellandur", balance: 1000 },
-        { accountNo: "1001888", type: "SAVINGS_ACCOUNT", branch: "Indira Nagar", balance: 2000 },
-      ],
-    },
-    {
-      id: 2,
-      firstName: "Jeff",
-      lastName: "Bezos",
-      email: "jeff.bezos@amazon.com",
-      phone: "",
-      accounts: [],
-    },
-    {
-      id: 3,
-      firstName: "Satya",
-      lastName: "Nadella",
-      email: "satya.nadella@microsoft.com",
-      phone: "",
-      accounts: [],
-    },
-    {
-      id: 4,
-      firstName: "Sergey",
-      lastName: "Brin",
-      email: "sergey.brin@google.com",
-      phone: "",
-      accounts: [],
-    },
-    {
-      id: 5,
-      firstName: "Larry",
-      lastName: "Page",
-      email: "larry.page@google.com",
-      phone: "",
-      accounts: [],
-    },
-  ];
+import java.util.*;
+
+class Customer {
+    int customerId;
+    String name;
+    String email;
+    String contact;
+    String accountType;
+
+    public Customer(int customerId, String name, String email, String contact, String accountType) {
+        this.customerId = customerId;
+        this.name = name;
+        this.email = email;
+        this.contact = contact;
+        this.accountType = accountType;
+    }
+}
+
+public class BankManagement {
+    static Scanner sc = new Scanner(System.in);
+    static List<Customer> customers = new ArrayList<>();
+    static int idCounter = 1000; // starting ID
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\nWelcome to Standard Chartered Bank");
+            System.out.println("Please enter your choice");
+            System.out.println("1 for Add new Customer");
+            System.out.println("2 for Display Customers");
+            System.out.println("3 for Search Customer");
+            System.out.println("4 for Delete Customer");
+            System.out.println("5 for Exit the bank application");
+            System.out.print("Enter choice: ");
+
+            int choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    addCustomer();
+                    break;
+                case 2:
+                    displayCustomers();
+                    break;
+                case 3:
+                    searchCustomer();
+                    break;
+                case 4:
+                    deleteCustomer();
+                    break;
+                case 5:
+                    System.out.println("Exiting application. Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
+
+    static void addCustomer() {
+        System.out.println("Please enter customer details:");
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Enter contact: ");
+        String contact = sc.nextLine();
+
+        System.out.print("Enter account type (Savings or Current): ");
+        String accountType = sc.nextLine();
+
+        int newId = generateCustomerId();
+        customers.add(new Customer(newId, name, email, contact, accountType));
+
+        System.out.println("Customer added successfully with customer id " + newId);
+    }
+
+    static void displayCustomers() {
+        if (customers.isEmpty()) {
+            System.out.println("No customers found.");
+            return;
+        }
+        for (Customer c : customers) {
+            System.out.println(c.customerId + " | " + c.name + " | " + c.email + " | " + c.contact + " | " + c.accountType);
+        }
+    }
+
+    static void searchCustomer() {
+        System.out.print("Enter Customer ID to search: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        for (Customer c : customers) {
+            if (c.customerId == id) {
+                System.out.println("Customer found: " + c.name + ", " + c.email + ", " + c.contact + ", " + c.accountType);
+                return;
+            }
+        }
+        System.out.println("Customer not found.");
+    }
+
+    static void deleteCustomer() {
+        System.out.print("Enter Customer ID to delete: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        Iterator<Customer> iterator = customers.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().customerId == id) {
+                iterator.remove();
+                System.out.println("Customer deleted successfully.");
+                return;
+            }
+        }
+        System.out.println("Customer not found.");
+    }
+
+    static int generateCustomerId() {
+        return ++idCounter;
+    }
+}
