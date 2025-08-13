@@ -1,82 +1,3 @@
-import React from "react";
-import "./App.css";
-import logo from "./Images/download.png";
-
-function App() {
-  return (
-    <div className="dashboard-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="logo-section">
-          <img src={logo} alt="Standard Chartered" className="logo" />
-        </div>
-        <nav>
-          <ul>
-            <li>Dashboard</li>
-            <li>User Management</li>
-            <li>AD Group Access</li>
-            <li>Report Access</li>
-            <li>Settings</li>
-            <li>Account</li>
-            <li>Help</li>
-          </ul>
-        </nav>
-      </aside>
-
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Header */}
-        <header className="header">
-          <div className="header-title">
-            <h2>Admin Dashboard</h2>
-            <p>Logged In as: Admin User</p>
-          </div>
-          <button className="logout-btn">Logout</button>
-        </header>
-
-        {/* Stats Cards */}
-        <section className="stats-section">
-          <div className="stat-card">
-            <h3>Active Users</h3>
-            <p className="stat-number">12</p>
-          </div>
-          <div className="stat-card">
-            <h3>Pending Requests</h3>
-            <p className="stat-number">4</p>
-          </div>
-          <div className="stat-card">
-            <h3>Recent Activity</h3>
-            <p className="stat-number">3</p>
-          </div>
-        </section>
-
-        {/* Recent Activities */}
-        <section className="recent-activities">
-          <h3>Recent Activities</h3>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> removed a user from AD group</p>
-            <span>1 hour ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> added a new report</p>
-            <span>3 hours ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> assigned access to a user</p>
-            <span>1 day ago</span>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
-
-export default App;
-
-
-
-
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -87,13 +8,14 @@ body {
   display: flex;
 }
 
-/* Sidebar */
+/* Sidebar with Standard Chartered blue */
 .sidebar {
-  background-color: #f4f6f8;
+  background-color: #0055a5; /* Standard Chartered Blue */
   width: 220px;
   height: 100vh;
   padding: 20px;
   box-shadow: 2px 0px 8px rgba(0,0,0,0.05);
+  color: white;
 }
 
 .logo-section {
@@ -118,7 +40,7 @@ body {
 }
 
 .sidebar li:hover {
-  background-color: #e0f0f7;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Main Content */
@@ -127,11 +49,17 @@ body {
   padding: 20px;
 }
 
-/* Header */
+/* Header with admin text next to logout */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .logout-btn {
@@ -185,3 +113,83 @@ body {
   color: gray;
   font-size: 0.85rem;
 }
+
+
+
+
+
+
+import React from "react";
+import "./App.css";
+import logo from "./Images/download.png";
+
+function App() {
+  return (
+    <div className="dashboard-container">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <div className="logo-section">
+          <img src={logo} alt="Standard Chartered" className="logo" />
+        </div>
+        <nav>
+          <ul>
+            <li>Dashboard</li>
+            <li>User Management</li>
+            <li>AD Group Access</li>
+            <li>Report Access</li>
+            <li>Settings</li>
+            <li>Account</li>
+            <li>Help</li>
+          </ul>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {/* Header */}
+        <header className="header">
+          <h2>Admin Dashboard</h2>
+          <div className="header-right">
+            <p>Logged In as: Admin User</p>
+            <button className="logout-btn">Logout</button>
+          </div>
+        </header>
+
+        {/* Stats Cards */}
+        <section className="stats-section">
+          <div className="stat-card">
+            <h3>Active Users</h3>
+            <p className="stat-number">12</p>
+          </div>
+          <div className="stat-card">
+            <h3>Pending Requests</h3>
+            <p className="stat-number">4</p>
+          </div>
+          <div className="stat-card">
+            <h3>Recent Activity</h3>
+            <p className="stat-number">3</p>
+          </div>
+        </section>
+
+        {/* Recent Activities */}
+        <section className="recent-activities">
+          <h3>Recent Activities</h3>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> removed a user from AD group</p>
+            <span>1 hour ago</span>
+          </div>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> added a new report</p>
+            <span>3 hours ago</span>
+          </div>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> assigned access to a user</p>
+            <span>1 day ago</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;
