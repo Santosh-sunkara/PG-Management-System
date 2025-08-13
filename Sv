@@ -1,1 +1,133 @@
-"C:\Users\2030888\registration-form\bootstrapproj\src\images\download.png"
+import React, { useState } from "react";
+import "./App.css";
+import logo from "./images/download.png"; // path to your logo
+
+function App() {
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
+
+  const handleSendOtp = () => {
+    setOtpSent(true);
+    alert("OTP Sent");
+  };
+
+  const handleVerify = () => {
+    alert(`OTP Entered: ${otp}`);
+  };
+
+  return (
+    <div className="container">
+      <div className="card">
+        <div className="logo-container">
+          <img src={logo} alt="Standard Chartered" className="logo" />
+        </div>
+        <div className="profile-icon">👤</div>
+        <h2>Forgot Password</h2>
+
+        <button className="btn btn-green" onClick={handleSendOtp}>
+          Send OTP
+        </button>
+
+        {otpSent && (
+          <>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className="input"
+            />
+            <button className="btn btn-green" onClick={handleVerify}>
+              Verify & Continue
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+/* Background */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #00a859, #0072ce);
+}
+
+/* Center the card */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card box */
+.card {
+  background: #f4f4f4;
+  padding: 30px;
+  width: 320px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo-container {
+  text-align: left;
+}
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* Profile icon */
+.profile-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+/* Title */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-green {
+  background-color: #00a859; /* SCB green */
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #008f4a;
+}
+
+/* Input box */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
