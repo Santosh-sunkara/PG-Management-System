@@ -62,6 +62,7 @@ export default App;
 
 
 
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
@@ -77,42 +78,42 @@ body {
 
 .card {
   background: white;
-  padding: 50px;
-  border-radius: 15px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
   text-align: center;
-  width: 450px; /* Bigger card width */
+  width: 380px; /* Moderate width */
 }
 
 .logo {
-  width: 120px; /* Bigger logo */
-  margin-bottom: 25px;
+  width: 95px; /* Moderate logo size */
+  margin-bottom: 20px;
 }
 
 h2 {
-  margin-bottom: 25px;
-  color: #003d6b; /* SCB color */
-  font-size: 26px; /* Bigger heading */
+  margin-bottom: 20px;
+  color: #003d6b;
+  font-size: 22px; /* Slightly bigger heading */
 }
 
 input {
   width: 100%;
-  padding: 15px; /* Bigger input */
-  margin: 12px 0;
+  padding: 12px; /* Moderate padding */
+  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 7px;
+  font-size: 15px;
 }
 
 button {
   width: 100%;
-  padding: 15px; /* Bigger button */
-  margin-top: 12px;
-  background-color: #00a859; /* SCB green */
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #00a859;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 7px;
+  font-size: 15px;
   cursor: pointer;
 }
 
