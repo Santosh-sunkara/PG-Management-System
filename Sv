@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../Assets/sclogo.jpeg";   // Standard Chartered logo
+import scBg from "../Assets/sc-bg.jpg";     // Background image
 import { useEffect, useState } from "react";
 
 function LandingPage() {
@@ -71,7 +72,7 @@ function LandingPage() {
                 to="/role-selection"
                 className="btn fw-bold"
                 style={{
-                  backgroundColor: "#00b85c",
+                  background: "linear-gradient(135deg, #0072ce, #00b85c)",
                   border: "none",
                   borderRadius: "25px",
                   padding: "8px 20px",
@@ -90,7 +91,7 @@ function LandingPage() {
       <section
         className="text-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 114, 206, 0.75), rgba(0, 168, 133, 0.75)), url(${require("../Assets/sc-bg.jpg")})`,
+          backgroundImage: `linear-gradient(rgba(0, 114, 206, 0.75), rgba(0, 168, 133, 0.75)), url(${scBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -126,7 +127,7 @@ function LandingPage() {
             to="/role-selection"
             className="btn btn-lg mt-4 fw-bold"
             style={{
-              background: "#00b85c",
+              background: "linear-gradient(135deg, #0072ce, #00b85c)",
               border: "none",
               padding: "12px 30px",
               borderRadius: "50px",
