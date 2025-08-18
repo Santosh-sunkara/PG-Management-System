@@ -1,65 +1,89 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import scBg from "../Assets/sc-bg.jpg"; // your background image
-import sclogo from "../Assets/sclogo.jpeg"; // your SC logo
+import logo from "../Assets/sclogo.jpeg";   // SC logo
+import scBg from "../Assets/sc-bg.jpg";     // Background image
+import { useEffect, useState } from "react";
 
-const LandingPage = () => {
+function LandingPage() {
+  const words = ["Welcome", "to", "RW", "Tool"];
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Welcome to RW Tool";
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    let i = 0;
-    const typingEffect = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText((prev) => prev + fullText[i]);
-        i++;
-      } else {
-        clearInterval(typingEffect);
-      }
-    }, 100); // typing speed
-    return () => clearInterval(typingEffect);
-  }, []);
+    if (index < words.length) {
+      const timer = setTimeout(() => {
+        setDisplayText((prev) =>
+          prev ? prev + " " + words[index] : words[index]
+        );
+        setIndex((prevIndex) => prevIndex + 1);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [index, words]);
+
+  const featureCards = [
+    {
+      title: "File Access",
+      desc: "Access only files you have permission for, securely managed by Admin.",
+      btn: "File Access",
+    },
+    {
+      title: "Report Generation",
+      desc: "Generate reports by Day, Week, Month or custom period.",
+      btn: "Report Generation",
+    },
+    {
+      title: "Bookmarks",
+      desc: "Mark important files as favorites and access them quickly.",
+      btn: "Bookmarks",
+    },
+  ];
 
   return (
-    <div>
+    <>
       {/* Navbar */}
       <nav
         className="navbar navbar-expand-lg"
         style={{
-          backgroundColor: "#fff",
-          padding: "10px 40px",
-          boxShadow: "0px 2px 8px rgba(0,0,0,0.1)",
+          background: "#fff",
+          padding: "12px 0",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
         }}
       >
-        <div className="container-fluid">
-          <a className="navbar-brand d-flex align-items-center" href="/">
-            <img
-              src={sclogo}
-              alt="SC Logo"
-              style={{ height: "40px", marginRight: "10px" }}
-            />
-            <span
-              style={{
-                fontWeight: "bold",
-                color: "#0072ce",
-                fontSize: "1.2rem",
-              }}
-            >
-              RW Tool
-            </span>
-          </a>
-          <button
-            className="btn"
-            style={{
-              background: "linear-gradient(135deg, #0072ce, #00b85c)",
-              color: "#fff",
-              fontWeight: "bold",
-              borderRadius: "20px",
-              padding: "6px 20px",
-            }}
+        <div className="container d-flex justify-content-between align-items-center">
+          <a
+            className="navbar-brand d-flex align-items-center fw-bold"
+            href="#"
+            style={{ color: "#0072ce", fontSize: "1.3rem" }}
           >
-            Login
-          </button>
+            <img
+              src={logo}
+              alt="Logo"
+              width="40"
+              height="40"
+              className="me-2"
+              style={{ borderRadius: "6px" }}
+            />
+            RW Tool
+          </a>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link
+                to="/role-selection"
+                className="btn fw-bold"
+                style={{
+                  background: "linear-gradient(135deg, #0072ce, #00b85c)",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "8px 20px",
+                  color: "#fff",
+                  boxShadow: "0px 3px 8px rgba(0,0,0,0.2)",
+                }}
+              >
+                Login
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -74,36 +98,20 @@ const LandingPage = () => {
           position: "relative",
         }}
       >
-        <div>
-          <h1
-            className="fw-bold display-4 mb-3"
-            style={{
-              color: "#fff",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
-            }}
-          >
+        <div
+          style={{
+            padding: "40px",
+            borderRadius: "15px",
+            maxWidth: "750px",
+            margin: "20px",
+            textShadow: "2px 2px 8px rgba(0,0,0,0.6)", // makes text readable
+          }}
+        >
+          <h1 className="fw-bold display-4 mb-3" style={{ color: "#fff" }}>
             {displayText}
           </h1>
-          <p
-            style={{
-              fontStyle: "italic",
-              color: "#f0f0f0",
-              marginBottom: "15px",
-              textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
-            }}
-          >
-            Here for good
-          </p>
-          <p
-            className="lead"
-            style={{
-              color: "#f0f0f0",
-              fontSize: "1.2rem",
-              textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
-            }}
-          >
-            Efficiently manage files, generate reports, and track activity
-            securely.
+          <p className="lead" style={{ color: "#f0f0f0", fontSize: "1.2rem" }}>
+            Efficiently manage files, generate reports, and track activity securely.
           </p>
           <Link
             to="/role-selection"
@@ -122,35 +130,71 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="container my-5">
-        <div className="row text-center">
-          <div className="col-md-4">
-            <h5 className="fw-bold">File Access</h5>
-            <p>Access only files you have permission for, securely managed by Admin.</p>
-          </div>
-          <div className="col-md-4">
-            <h5 className="fw-bold">Report Generation</h5>
-            <p>Generate reports by Day, Week, Month or custom period.</p>
-          </div>
-          <div className="col-md-4">
-            <h5 className="fw-bold">Bookmarks</h5>
-            <p>Mark important files as favorites and access them quickly.</p>
+      {/* Feature Section */}
+      <section className="py-5" style={{ backgroundColor: "#f9f9f9" }}>
+        <div className="container">
+          <h2 className="fw-bold text-center mb-5" style={{ color: "#0072ce" }}>
+            Key Features
+          </h2>
+          <div className="row text-center g-4">
+            {featureCards.map((card, index) => (
+              <div className="col-md-4" key={index}>
+                <div
+                  className="card shadow-sm h-100 border-0"
+                  style={{
+                    borderRadius: "18px",
+                    transition: "transform 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "translateY(-8px)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "translateY(0)")
+                  }
+                >
+                  <div className="card-body p-4">
+                    <h5 className="fw-bold text-primary">{card.title}</h5>
+                    <p className="text-muted">{card.desc}</p>
+                    <Link
+                      to="/role-selection"
+                      className="btn fw-bold mt-3"
+                      style={{
+                        background: "linear-gradient(135deg, #0072ce, #00b85c)",
+                        borderRadius: "25px",
+                        padding: "8px 20px",
+                        color: "#fff",
+                      }}
+                    >
+                      {card.btn}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer
-        className="text-center py-3"
-        style={{ backgroundColor: "#f8f9fa", marginTop: "50px" }}
+        className="text-center py-4"
+        style={{
+          backgroundColor: "#fff",
+          color: "#0072ce",
+          borderTop: "2px solid #00b85c",
+        }}
       >
-        <p className="mb-0" style={{ fontSize: "0.9rem", color: "#555" }}>
-          © {new Date().getFullYear()} Standard Chartered RW Tool. All rights reserved.
-        </p>
+        <div className="container">
+          <p className="mb-1 fw-bold">
+            &copy; {new Date().getFullYear()} RW Tool
+          </p>
+          <p style={{ fontSize: "0.9rem", color: "#666" }}>
+            Built with Standard Chartered design standards for secure and efficient workflows.
+          </p>
+        </div>
       </footer>
-    </div>
+    </>
   );
-};
+}
 
 export default LandingPage;
