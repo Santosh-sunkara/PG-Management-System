@@ -1,207 +1,191 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f8f9fa;
-  height: 100vh;
-  overflow: hidden; /* prevent scrolling */
-}
-
-.dashboard-container {
-  display: flex;
-  height: 100vh; /* full screen height */
-}
-
-/* Sidebar */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  height: 100%;
-}
-
-/* Logo section - white background */
-.logo-section {
-  background-color: white;
-  text-align: center;
-  padding: 15px;
-}
-
-.logo {
-  width: 150px;
-}
-
-/* Menu section - blue background */
-.menu-section {
-  flex: 1;
-  background-color: #0055a5; /* Standard Chartered Blue */
-  color: white;
-  padding: 20px 0;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.sidebar li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto; /* if content grows too much */
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.logout-btn {
-  padding: 8px 16px;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #45a049;
-}
-
-/* Stats Cards */
-.stats-section {
-  display: flex;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.stat-card {
-  flex: 1;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2rem;
-  color: #4CAF50;
-}
-
-/* Recent Activities */
-.recent-activities h3 {
-  margin-top: 0;
-}
-
-.activity-card {
-  background-color: white;
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-
-.activity-card span {
-  color: gray;
-  font-size: 0.85rem;
-}
-
-
-
-
-
-
-import React from "react";
-import "./App.css";
-import logo from "./Images/download.png";
-
-function App() {
+import { Link } from "react-router-dom";
+import logo from "../Assests/sclogo.jpeg";
+import { useEffect, useState } from "react";
+ 
+function LandingPage() {
+ 
+  const words = ["Welcome", "to", "RW", "Tool"];
+  const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
+ 
+  useEffect(() => {
+    if (index < words.length) {
+      const timer = setTimeout(() => {
+        setDisplayText((prev) =>
+          prev ? prev + " " + words[index] : words[index]
+        );
+        setIndex((prevIndex) => prevIndex + 1);
+      }, 1000);
+ 
+      return () => clearTimeout(timer);
+    }
+  }, [index, words]);
+ 
+  const featureCards = [
+    {
+      title: "File Access",
+      desc: "Access only files you have permission for, securely managed by Admin.",
+      btn: "File Access",
+      bg: "#00bcd4",
+    },
+    {
+      title: "Report Generation",
+      desc: "Generate reports by Day, Week, Month or custom period.",
+      btn: "Report Generation",
+      bg: "#00a885",
+    },
+    {
+      title: "Bookmarks",
+      desc: "Mark important files as favorites and access them quickly.",
+      btn: "Bookmarks",
+      bg: "#0072ce",
+    },
+  ];
+ 
   return (
-    <div className="dashboard-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="logo-section">
-          <img src={logo} alt="Standard Chartered" className="logo" />
-        </div>
-        <div className="menu-section">
-          <ul>
-            <li>Dashboard</li>
-            <li>User Management</li>
-            <li>AD Group Access</li>
-            <li>Report Access</li>
-            <li>Settings</li>
-            <li>Account</li>
-            <li>Help</li>
+    <>
+     
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{
+          background: "linear-gradient(135deg, #0072ce, #00a885)",
+          padding: "10px 0",
+        }}
+      >
+        <div className="container d-flex justify-content-between align-items-center">
+          <a
+            className="navbar-brand d-flex align-items-center text-white fw-bold"
+            href="#"
+          >
+            <img
+              src={logo}
+              alt="Logo"
+              width="40"
+              height="40"
+              className="me-2"
+              style={{ borderRadius: "6px" }}
+            />
+            RW Tool
+          </a>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link
+                to="/role-selection"
+                className="btn fw-bold"
+                style={{
+                  backgroundColor: "#00b85c",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "8px 20px",
+                  color: "#fff",
+                  boxShadow: "0px 3px 8px rgba(0,0,0,0.2)",
+                }}
+              >
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Header */}
-        <header className="header">
-          <h2>Admin Dashboard</h2>
-          <div className="header-right">
-            <p>Logged In as: Admin User</p>
-            <button className="logout-btn">Logout</button>
+      </nav>
+ 
+     
+      <section
+        className="text-center py-5 text-white"
+        style={{
+          background: "linear-gradient(135deg, #0072ce, #00a885)",
+        }}
+      >
+        <div className="container">
+          <h1
+            className="fw-bold display-4 mb-3"
+            style={{
+              textShadow: "1px 1px 6px rgba(0,0,0,0.2)",
+              minHeight: "70px",
+            }}
+          >
+            {displayText}
+          </h1>
+          <p
+            className="lead"
+            style={{ maxWidth: "700px", margin: "auto", color: "#eaf6f6" }}
+          >
+            Efficiently manage files, generate reports, and track activity securely.
+          </p>
+          <Link
+            to="/role-selection"
+            className="btn btn-lg mt-4 fw-bold"
+            style={{
+              background: "#00b85c",
+              border: "none",
+              padding: "12px 30px",
+              borderRadius: "50px",
+              color: "#fff",
+              boxShadow: "0px 4px 12px rgba(0,0,0,0.2)",
+            }}
+          >
+            Login to Get Started
+          </Link>
+        </div>
+      </section>
+ 
+     
+      <section className="py-5">
+        <div className="container">
+          <div className="row text-center g-4">
+            {featureCards.map((card, index) => (
+              <div className="col-md-4" key={index}>
+                <div
+                  className="card shadow-lg h-100 border-0 text-white"
+                  style={{
+                    backgroundColor: card.bg,
+                    borderRadius: "18px",
+                    transition: "transform 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "translateY(-8px)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "translateY(0)")
+                  }
+                >
+                  <div className="card-body p-4">
+                    <h5 className="fw-bold">{card.title}</h5>
+                    <p>{card.desc}</p>
+                    <Link
+                      to="/role-selection"
+                      className="btn btn-light fw-bold mt-3"
+                      style={{
+                        borderRadius: "25px",
+                        padding: "8px 20px",
+                        color: card.bg,
+                      }}
+                    >
+                      {card.btn}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </header>
-
-        {/* Stats Cards */}
-        <section className="stats-section">
-          <div className="stat-card">
-            <h3>Active Users</h3>
-            <p className="stat-number">12</p>
-          </div>
-          <div className="stat-card">
-            <h3>Pending Requests</h3>
-            <p className="stat-number">4</p>
-          </div>
-          <div className="stat-card">
-            <h3>Recent Activity</h3>
-            <p className="stat-number">3</p>
-          </div>
-        </section>
-
-        {/* Recent Activities */}
-        <section className="recent-activities">
-          <h3>Recent Activities</h3>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> removed a user from AD group</p>
-            <span>1 hour ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> added a new report</p>
-            <span>3 hours ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> assigned access to a user</p>
-            <span>1 day ago</span>
-          </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+ 
+     
+      <footer
+        className="text-center py-3"
+        style={{ backgroundColor: "#e6f7f5", color: "#004b87" }}
+      >
+        <div className="container">
+          <p className="mb-0">&copy; {new Date().getFullYear()} RW Tool</p>
+        </div>
+      </footer>
+    </>
   );
 }
+ 
+export default LandingPage;
+ 
 
-export default App;
+
+
+LandingPage.js
