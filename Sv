@@ -1,1 +1,197 @@
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fuk.linkedin.com%2Fin%2Fbillthomaswinters&psig=AOvVaw1PouTOTs9M818hPe63VYT_&ust=1755586447737000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNiT86zjk48DFQAAAAAdAAAAABAa
+import { Link } from "react-router-dom";
+import logo from "../Assets/sclogo.jpeg";   // Standard Chartered logo
+import { useEffect, useState } from "react";
+
+function LandingPage() {
+  const words = ["Welcome", "to", "RW", "Tool"];
+  const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < words.length) {
+      const timer = setTimeout(() => {
+        setDisplayText((prev) =>
+          prev ? prev + " " + words[index] : words[index]
+        );
+        setIndex((prevIndex) => prevIndex + 1);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [index, words]);
+
+  const featureCards = [
+    {
+      title: "File Access",
+      desc: "Access only files you have permission for, securely managed by Admin.",
+      btn: "File Access",
+    },
+    {
+      title: "Report Generation",
+      desc: "Generate reports by Day, Week, Month or custom period.",
+      btn: "Report Generation",
+    },
+    {
+      title: "Bookmarks",
+      desc: "Mark important files as favorites and access them quickly.",
+      btn: "Bookmarks",
+    },
+  ];
+
+  return (
+    <>
+      {/* Navbar */}
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{
+          background: "#fff",
+          padding: "10px 0",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        <div className="container d-flex justify-content-between align-items-center">
+          <a
+            className="navbar-brand d-flex align-items-center fw-bold"
+            href="#"
+            style={{ color: "#0072ce", fontSize: "1.3rem" }}
+          >
+            <img
+              src={logo}
+              alt="Logo"
+              width="40"
+              height="40"
+              className="me-2"
+              style={{ borderRadius: "6px" }}
+            />
+            RW Tool
+          </a>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link
+                to="/role-selection"
+                className="btn fw-bold"
+                style={{
+                  backgroundColor: "#00b85c",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "8px 20px",
+                  color: "#fff",
+                  boxShadow: "0px 3px 8px rgba(0,0,0,0.2)",
+                }}
+              >
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section
+        className="text-center text-white"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 114, 206, 0.75), rgba(0, 168, 133, 0.75)), url(${require("../Assets/sc-bg.jpg")})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          minHeight: "70vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "60px 0",
+        }}
+      >
+        <div className="container">
+          <h1
+            className="fw-bold display-4 mb-3"
+            style={{
+              textShadow: "1px 1px 8px rgba(0,0,0,0.4)",
+              minHeight: "70px",
+            }}
+          >
+            {displayText}
+          </h1>
+          <p
+            className="lead"
+            style={{
+              maxWidth: "700px",
+              margin: "auto",
+              color: "#f1fdfc",
+              fontSize: "1.2rem",
+            }}
+          >
+            Efficiently manage files, generate reports, and track activity securely.
+          </p>
+          <Link
+            to="/role-selection"
+            className="btn btn-lg mt-4 fw-bold"
+            style={{
+              background: "#00b85c",
+              border: "none",
+              padding: "12px 30px",
+              borderRadius: "50px",
+              color: "#fff",
+              boxShadow: "0px 4px 12px rgba(0,0,0,0.3)",
+            }}
+          >
+            Login to Get Started
+          </Link>
+        </div>
+      </section>
+
+      {/* Feature Section */}
+      <section className="py-5" style={{ backgroundColor: "#f9f9f9" }}>
+        <div className="container">
+          <div className="row text-center g-4">
+            {featureCards.map((card, index) => (
+              <div className="col-md-4" key={index}>
+                <div
+                  className="card shadow-sm h-100 border-0"
+                  style={{
+                    borderRadius: "18px",
+                    transition: "transform 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "translateY(-8px)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "translateY(0)")
+                  }
+                >
+                  <div className="card-body p-4">
+                    <h5 className="fw-bold text-primary">{card.title}</h5>
+                    <p className="text-muted">{card.desc}</p>
+                    <Link
+                      to="/role-selection"
+                      className="btn fw-bold mt-3"
+                      style={{
+                        backgroundColor: "#00b85c",
+                        borderRadius: "25px",
+                        padding: "8px 20px",
+                        color: "#fff",
+                      }}
+                    >
+                      {card.btn}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer
+        className="text-center py-3"
+        style={{ backgroundColor: "#fff", color: "#0072ce", borderTop: "1px solid #eee" }}
+      >
+        <div className="container">
+          <p className="mb-0">&copy; {new Date().getFullYear()} RW Tool</p>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+export default LandingPage;
