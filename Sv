@@ -1,68 +1,4 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.card {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
-  text-align: center;
-  width: 380px; /* Moderate width */
-}
-
-.logo {
-  width: 95px; /* Moderate logo size */
-  margin-bottom: 20px;
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: #003d6b;
-  font-size: 22px; /* Slightly bigger heading */
-}
-
-input {
-  width: 100%;
-  padding: 12px; /* Moderate padding */
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 15px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background-color: #00a859;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #008f4a;
-}
-
-
-
-
-
-
 import React, { useState } from "react";
-import "./App.css";
 import logo from "./Images/download.png";
 
 function App() {
@@ -87,34 +23,94 @@ function App() {
     alert(`OTP verified: ${otp}`);
   };
 
+  // Inline styles
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
+    backgroundSize: "400% 400%",
+    animation: "gradientBG 8s ease infinite",
+    fontFamily: "Arial, sans-serif",
+    margin: 0,
+  };
+
+  const cardStyle = {
+    background: "white",
+    padding: "40px",
+    borderRadius: "12px",
+    boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.12)",
+    textAlign: "center",
+    width: "380px",
+  };
+
+  const logoStyle = {
+    width: "95px",
+    marginBottom: "20px",
+  };
+
+  const headingStyle = {
+    marginBottom: "20px",
+    color: "#003d6b",
+    fontSize: "22px",
+  };
+
+  const inputStyle = {
+    width: "100%",
+    padding: "12px",
+    margin: "10px 0",
+    border: "1px solid #ccc",
+    borderRadius: "7px",
+    fontSize: "15px",
+  };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "12px",
+    marginTop: "10px",
+    backgroundColor: "#00a859",
+    color: "white",
+    border: "none",
+    borderRadius: "7px",
+    fontSize: "15px",
+    cursor: "pointer",
+  };
+
+  const buttonHoverStyle = {
+    backgroundColor: "#008f4a",
+  };
+
   return (
-    <div className="container" style={{
-      background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
-      backgroundSize: "400% 400%",
-      animation: "gradientBG 8s ease infinite",
-    }}
->
-  <style>
+    <div style={containerStyle}>
+      <style>
         {`
           @keyframes gradientBG {
             0% {background-position: 0% 50%;}
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
           }
+          button:hover {
+            background-color: ${buttonHoverStyle.backgroundColor};
+          }
         `}
       </style>
-      <div className="card">
-        <img src={logo} alt="Standard Chartered Logo" className="logo" />
-        <h2>Forgot Password</h2>
+
+      <div style={cardStyle}>
+        <img src={logo} alt="Standard Chartered Logo" style={logoStyle} />
+        <h2 style={headingStyle}>Forgot Password</h2>
 
         <input
           type="text"
           placeholder="Enter Email / Username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          style={inputStyle}
         />
 
-        <button onClick={handleSendOtp}>Send OTP</button>
+        <button onClick={handleSendOtp} style={buttonStyle}>
+          Send OTP
+        </button>
 
         {otpSent && (
           <>
@@ -123,8 +119,11 @@ function App() {
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
+              style={inputStyle}
             />
-            <button onClick={handleVerify}>Verify & Continue</button>
+            <button onClick={handleVerify} style={buttonStyle}>
+              Verify & Continue
+            </button>
           </>
         )}
       </div>
@@ -133,5 +132,3 @@ function App() {
 }
 
 export default App;
-
-
