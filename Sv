@@ -1,1 +1,138 @@
-https://teams.microsoft.com/l/meetup-join/19%3ameeting_NThjZDQ2YjMtYzMzZi00YzQ1LWI5MWUtNGVhMjEyZTdjNmRh%40thread.v2/0?context=%7b%22Tid%22%3a%22b44900f1-2def-4c3b-9ec6-9020d604e19e%22%2c%22Oid%22%3a%22ca4a36dd-094c-424d-bef3-9107380ad3db%22%7d
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  width: 380px; /* Moderate width */
+}
+
+.logo {
+  width: 95px; /* Moderate logo size */
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #003d6b;
+  font-size: 22px; /* Slightly bigger heading */
+}
+
+input {
+  width: 100%;
+  padding: 12px; /* Moderate padding */
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #00a859;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #008f4a;
+}
+
+
+
+
+
+
+
+import React, { useState } from "react";
+import "./App.css";
+import logo from "./Images/download.png";
+
+function App() {
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+
+  const handleSendOtp = () => {
+    if (!email) {
+      alert("Please enter your email or username");
+      return;
+    }
+    setOtpSent(true);
+    alert(`OTP sent to ${email}`);
+  };
+
+  const handleVerify = () => {
+    if (!otp) {
+      alert("Please enter the OTP");
+      return;
+    }
+    alert(`OTP verified: ${otp}`);
+  };
+
+  return (
+    <div className="container" style={{
+      background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
+      backgroundSize: "400% 400%",
+      animation: "gradientBG 8s ease infinite",
+    }}
+>
+  <style>
+        {`
+          @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+          }
+        `}
+      </style>
+      <div className="card">
+        <img src={logo} alt="Standard Chartered Logo" className="logo" />
+        <h2>Forgot Password</h2>
+
+        <input
+          type="text"
+          placeholder="Enter Email / Username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <button onClick={handleSendOtp}>Send OTP</button>
+
+        {otpSent && (
+          <>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+            />
+            <button onClick={handleVerify}>Verify & Continue</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
