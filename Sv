@@ -40,35 +40,35 @@ function App() {
   // Card
   const cardStyle = {
     background: "white",
-    padding: "40px",
-    borderRadius: "12px",
-    boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.12)",
+    padding: "50px",
+    borderRadius: "14px",
+    boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.15)",
     textAlign: "center",
-    width: "380px",
+    width: "450px", // increased
   };
 
   const logoStyle = {
-    width: "95px",
-    marginBottom: "20px",
+    width: "110px", // increased
+    marginBottom: "25px",
   };
 
   const headingStyle = {
-    marginBottom: "20px",
+    marginBottom: "25px",
     color: "#003d6b",
-    fontSize: "22px",
+    fontSize: "24px", // increased
   };
 
   // ✅ One common style for ALL boxes (inputs & buttons)
   const commonBoxStyle = {
     width: "100%",
-    height: "50px",
-    fontSize: "16px",
-    borderRadius: "7px",
-    margin: "10px 0",
+    height: "60px", // increased height
+    fontSize: "18px", // increased font size
+    borderRadius: "8px",
+    margin: "12px 0",
     boxSizing: "border-box",
     display: "block",
-    border: "1px solid #ccc", // keep same border thickness
-    padding: "0 12px",
+    border: "1px solid #ccc", // same border thickness
+    padding: "0 14px", // adjusted padding
   };
 
   const inputStyle = {
@@ -81,10 +81,11 @@ function App() {
     ...commonBoxStyle,
     backgroundColor: isHovered ? "#008f4a" : "#00a859",
     color: "white",
-    border: "1px solid #00a859", // ✅ same thickness as inputs
+    border: "1px solid #00a859",
     cursor: "pointer",
-    padding: 0, // remove extra padding from button
+    padding: 0,
     transition: "background-color 0.3s ease",
+    fontWeight: "bold",
   });
 
   return (
