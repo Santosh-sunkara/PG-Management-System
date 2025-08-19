@@ -24,7 +24,7 @@ function App() {
     alert(`OTP verified: ${otp}`);
   };
 
-  // Container background
+  // Background
   const containerStyle = {
     display: "flex",
     justifyContent: "center",
@@ -58,29 +58,32 @@ function App() {
     fontSize: "22px",
   };
 
-  // ✅ Common style for both input and button (same box-sizing & width)
+  // ✅ One common style for ALL boxes (inputs & buttons)
   const commonBoxStyle = {
     width: "100%",
-    height: "48px",
+    height: "50px",
     fontSize: "16px",
     borderRadius: "7px",
     margin: "10px 0",
-    boxSizing: "border-box", // ensures equal width including padding/border
+    boxSizing: "border-box",
     display: "block",
+    border: "1px solid #ccc", // keep same border thickness
+    padding: "0 12px",
   };
 
   const inputStyle = {
     ...commonBoxStyle,
-    border: "1px solid #ccc",
-    padding: "0 12px",
+    backgroundColor: "#fff",
+    color: "#000",
   };
 
   const buttonStyle = (isHovered) => ({
     ...commonBoxStyle,
     backgroundColor: isHovered ? "#008f4a" : "#00a859",
     color: "white",
-    border: "1px solid #00a859", // ✅ matches border width with input
+    border: "1px solid #00a859", // ✅ same thickness as inputs
     cursor: "pointer",
+    padding: 0, // remove extra padding from button
     transition: "background-color 0.3s ease",
   });
 
