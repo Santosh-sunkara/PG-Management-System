@@ -75,10 +75,13 @@ body {
 
 
 
+
 import React, { useState } from "react";
 import "./App.css";
 
-function Sidebar({ active, setActive }) {
+function App() {
+  const [active, setActive] = useState("Dashboard");
+
   const menuItems = [
     "Dashboard",
     "User Management",
@@ -90,20 +93,68 @@ function Sidebar({ active, setActive }) {
   ];
 
   return (
-    <div className="sidebar">
-      <ul>
-        {menuItems.map((item) => (
-          <li
-            key={item}
-            className={active === item ? "active" : ""}
-            onClick={() => setActive(item)}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+    <div className="app-container">
+      {/* Sidebar */}
+      <div className="sidebar">
+        <ul>
+          {menuItems.map((item) => (
+            <li
+              key={item}
+              className={active === item ? "active" : ""}
+              onClick={() => setActive(item)}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      <div className="main-content">
+        {active === "Dashboard" && (
+          <>
+            <h1>Admin Dashboard</h1>
+            <div className="card">
+              <h2>Active Users</h2>
+              <p>12</p>
+            </div>
+            <div className="card">
+              <h2>Pending Requests</h2>
+              <p>4</p>
+            </div>
+            <div className="card">
+              <h2>Recent Activity</h2>
+              <p>3</p>
+            </div>
+          </>
+        )}
+
+        {active === "User Management" && (
+          <h1>User Management Page</h1>
+        )}
+
+        {active === "AD Group Access" && (
+          <h1>AD Group Access Page</h1>
+        )}
+
+        {active === "Report Access" && (
+          <h1>Report Access Page</h1>
+        )}
+
+        {active === "Settings" && (
+          <h1>Settings Page</h1>
+        )}
+
+        {active === "Account" && (
+          <h1>Account Page</h1>
+        )}
+
+        {active === "Help" && (
+          <h1>Help Page</h1>
+        )}
+      </div>
     </div>
   );
 }
 
-export default Sidebar;
+export default App;
