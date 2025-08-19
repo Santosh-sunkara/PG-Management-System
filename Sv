@@ -24,7 +24,7 @@ function App() {
     alert(`OTP verified: ${otp}`);
   };
 
-  // Styles
+  // Container background
   const containerStyle = {
     display: "flex",
     justifyContent: "center",
@@ -37,6 +37,7 @@ function App() {
     animation: "gradientBG 8s ease infinite",
   };
 
+  // Card
   const cardStyle = {
     background: "white",
     padding: "40px",
@@ -57,14 +58,14 @@ function App() {
     fontSize: "22px",
   };
 
-  // Common style for both input and button
+  // ✅ Common style for both input and button (same box-sizing & width)
   const commonBoxStyle = {
     width: "100%",
     height: "48px",
     fontSize: "16px",
     borderRadius: "7px",
     margin: "10px 0",
-    boxSizing: "border-box", // ✅ ensures width includes padding + border
+    boxSizing: "border-box", // ensures equal width including padding/border
     display: "block",
   };
 
@@ -78,7 +79,7 @@ function App() {
     ...commonBoxStyle,
     backgroundColor: isHovered ? "#008f4a" : "#00a859",
     color: "white",
-    border: "none",
+    border: "1px solid #00a859", // ✅ matches border width with input
     cursor: "pointer",
     transition: "background-color 0.3s ease",
   });
@@ -100,6 +101,7 @@ function App() {
         <img src={logo} alt="Standard Chartered Logo" style={logoStyle} />
         <h2 style={headingStyle}>Forgot Password</h2>
 
+        {/* Email / Username */}
         <input
           type="text"
           placeholder="Enter Email / Username"
@@ -108,6 +110,7 @@ function App() {
           style={inputStyle}
         />
 
+        {/* Send OTP */}
         <button
           onClick={handleSendOtp}
           style={buttonStyle(hoverBtn === "send")}
@@ -119,6 +122,7 @@ function App() {
 
         {otpSent && (
           <>
+            {/* Enter OTP */}
             <input
               type="text"
               placeholder="Enter OTP"
@@ -126,6 +130,8 @@ function App() {
               onChange={(e) => setOtp(e.target.value)}
               style={inputStyle}
             />
+
+            {/* Verify & Continue */}
             <button
               onClick={handleVerify}
               style={buttonStyle(hoverBtn === "verify")}
