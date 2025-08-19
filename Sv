@@ -5,7 +5,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
-  const [hoverBtn, setHoverBtn] = useState(null); // track hover separately for buttons
+  const [hoverBtn, setHoverBtn] = useState(null);
 
   const handleSendOtp = () => {
     if (!email) {
@@ -57,26 +57,28 @@ function App() {
     fontSize: "22px",
   };
 
-  const inputStyle = {
+  // Common style for both input and button
+  const commonBoxStyle = {
     width: "100%",
-    height: "45px",   // same height as button
-    padding: "0 12px",
-    margin: "10px 0",
-    border: "1px solid #ccc",
+    height: "48px",
+    fontSize: "16px",
     borderRadius: "7px",
-    fontSize: "15px",
-    boxSizing: "border-box",
+    margin: "10px 0",
+    boxSizing: "border-box", // ✅ ensures width includes padding + border
+    display: "block",
+  };
+
+  const inputStyle = {
+    ...commonBoxStyle,
+    border: "1px solid #ccc",
+    padding: "0 12px",
   };
 
   const buttonStyle = (isHovered) => ({
-    width: "100%",
-    height: "45px",  // same height as input
-    marginTop: "10px",
+    ...commonBoxStyle,
     backgroundColor: isHovered ? "#008f4a" : "#00a859",
     color: "white",
     border: "none",
-    borderRadius: "7px",
-    fontSize: "15px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
   });
