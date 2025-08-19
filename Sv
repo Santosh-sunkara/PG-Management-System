@@ -42,13 +42,11 @@ function App() {
   };
 
   const liStyle = {
-    padding: "12px 20px",
+    padding: "14px 20px",
     cursor: "pointer",
     borderRadius: "5px",
-  };
-
-  const liHoverStyle = {
-    backgroundColor: "rgba(255,255,255,0.2)",
+    fontSize: "18px", // ✅ Increased font size
+    fontWeight: "500",
   };
 
   const mainContentStyle = {
@@ -123,7 +121,7 @@ function App() {
             <li style={liStyle}>Dashboard</li>
             <li style={liStyle}>User Management</li>
             <li style={liStyle}>AD Group Access</li>
-            {/* 🚫 Removed "Report Access" */}
+            {/* 🚫 Report Access removed */}
             <li style={liStyle}>Settings</li>
             <li style={liStyle}>Account</li>
             <li style={liStyle}>Help</li>
