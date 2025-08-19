@@ -5,7 +5,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoverBtn, setHoverBtn] = useState(null); // track hover separately for buttons
 
   const handleSendOtp = () => {
     if (!email) {
@@ -24,7 +24,7 @@ function App() {
     alert(`OTP verified: ${otp}`);
   };
 
-  // Inline styles
+  // Styles
   const containerStyle = {
     display: "flex",
     justifyContent: "center",
@@ -59,29 +59,31 @@ function App() {
 
   const inputStyle = {
     width: "100%",
-    padding: "12px",
+    height: "45px",   // same height as button
+    padding: "0 12px",
     margin: "10px 0",
     border: "1px solid #ccc",
     borderRadius: "7px",
     fontSize: "15px",
+    boxSizing: "border-box",
   };
 
-  const buttonStyle = {
+  const buttonStyle = (isHovered) => ({
     width: "100%",
-    padding: "12px",
+    height: "45px",  // same height as input
     marginTop: "10px",
-    backgroundColor: isHovered ? "#008f4a" : "#00a859", // hover effect
+    backgroundColor: isHovered ? "#008f4a" : "#00a859",
     color: "white",
     border: "none",
     borderRadius: "7px",
     fontSize: "15px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
-  };
+  });
 
   return (
     <div style={containerStyle}>
-      {/* Gradient animation keyframes */}
+      {/* Gradient animation */}
       <style>
         {`
           @keyframes gradientBG {
@@ -106,9 +108,9 @@ function App() {
 
         <button
           onClick={handleSendOtp}
-          style={buttonStyle}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          style={buttonStyle(hoverBtn === "send")}
+          onMouseEnter={() => setHoverBtn("send")}
+          onMouseLeave={() => setHoverBtn(null)}
         >
           Send OTP
         </button>
@@ -124,9 +126,9 @@ function App() {
             />
             <button
               onClick={handleVerify}
-              style={buttonStyle}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              style={buttonStyle(hoverBtn === "verify")}
+              onMouseEnter={() => setHoverBtn("verify")}
+              onMouseLeave={() => setHoverBtn(null)}
             >
               Verify & Continue
             </button>
