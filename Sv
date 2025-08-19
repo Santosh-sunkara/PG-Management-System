@@ -1,25 +1,137 @@
-Perfect 👍 I’ve added your name and included the point about the merging issue. Here’s the updated mail draft:
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
 
----
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-**Subject:** Rhone RW Tool Retrospective
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  width: 380px; /* Moderate width */
+}
 
-Greetings Team,
+.logo {
+  width: 95px; /* Moderate logo size */
+  margin-bottom: 20px;
+}
 
-I hope you are doing well. I am **Shiva Santosh**, Scrum Master for RW tools this week, and here is our retrospective.
+h2 {
+  margin-bottom: 20px;
+  color: #003d6b;
+  font-size: 22px; /* Slightly bigger heading */
+}
 
-The team successfully completed the planned tasks on time, meeting our deadlines and ensuring deliverables were finished as scheduled. The coordination and collaboration within the team helped us stay on track, and overall, the execution went smoothly.
+input {
+  width: 100%;
+  padding: 12px; /* Moderate padding */
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+}
 
-One challenge we faced was during the merging process, which caused some delays. However, we have already planned the next steps and are actively working on resolving it.
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #00a859;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
 
-For improvements, we can focus on preparing more thoroughly for presentations to make the delivery more effective and impactful. A few points could have been highlighted in greater detail, and the overall flow of the session can be made smoother. Ensuring that both content and delivery are well-practiced will help us achieve better results.
+button:hover {
+  background-color: #008f4a;
+}
 
-Having regular discussions about our work during the process will also allow us to refine our output further and make future presentations even more engaging and impactful.
 
-Best regards,
-**Shiva Santosh**
-Scrum Master – RW Tools
 
----
 
-Would you like me to make this **shorter and crisp like a quick note** (1–2 paragraphs) or keep it in this **structured detailed format**?
+
+
+import React, { useState } from "react";
+import "./App.css";
+import logo from "./Images/download.png";
+
+function App() {
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+
+  const handleSendOtp = () => {
+    if (!email) {
+      alert("Please enter your email or username");
+      return;
+    }
+    setOtpSent(true);
+    alert(`OTP sent to ${email}`);
+  };
+
+  const handleVerify = () => {
+    if (!otp) {
+      alert("Please enter the OTP");
+      return;
+    }
+    alert(`OTP verified: ${otp}`);
+  };
+
+  return (
+    <div className="container" style={{
+      background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
+      backgroundSize: "400% 400%",
+      animation: "gradientBG 8s ease infinite",
+    }}
+>
+  <style>
+        {`
+          @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+          }
+        `}
+      </style>
+      <div className="card">
+        <img src={logo} alt="Standard Chartered Logo" className="logo" />
+        <h2>Forgot Password</h2>
+
+        <input
+          type="text"
+          placeholder="Enter Email / Username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <button onClick={handleSendOtp}>Send OTP</button>
+
+        {otpSent && (
+          <>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+            />
+            <button onClick={handleVerify}>Verify & Continue</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
