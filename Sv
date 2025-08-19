@@ -1,152 +1,206 @@
-import React, { useState } from "react";
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f8f9fa;
+  height: 100vh;
+  overflow: hidden; /* prevent scrolling */
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh; /* full screen height */
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100%;
+}
+
+/* Logo section - white background */
+.logo-section {
+  background-color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.logo {
+  width: 150px;
+}
+
+/* Menu section - blue background */
+.menu-section {
+  flex: 1;
+  background-color: #0055a5; /* Standard Chartered Blue */
+  color: white;
+  padding: 20px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sidebar li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #45a049;
+}
+
+
+.stats-section {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+
+.recent-activities h3 {
+  margin-top: 0;
+}
+
+.activity-card {
+  background-color: white;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.activity-card span {
+  color: gray;
+  font-size: 0.85rem;
+}
+
+
+
+
+
+
+
+
+
+import React from "react";
+import "./App.css";
 import logo from "./Images/download.png";
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
-  const [hoverBtn, setHoverBtn] = useState(null);
-
-  const handleSendOtp = () => {
-    if (!email) {
-      alert("Please enter your email or username");
-      return;
-    }
-    setOtpSent(true);
-    alert(`OTP sent to ${email}`);
-  };
-
-  const handleVerify = () => {
-    if (!otp) {
-      alert("Please enter the OTP");
-      return;
-    }
-    alert(`OTP verified: ${otp}`);
-  };
-
-  // Background
-  const containerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
-    backgroundSize: "400% 400%",
-    fontFamily: "Arial, sans-serif",
-    margin: 0,
-    animation: "gradientBG 8s ease infinite",
-  };
-
-  // Card
-  const cardStyle = {
-    background: "white",
-    padding: "50px",
-    borderRadius: "14px",
-    boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.15)",
-    textAlign: "center",
-    width: "450px", // increased
-  };
-
-  const logoStyle = {
-    width: "110px", // increased
-    marginBottom: "25px",
-  };
-
-  const headingStyle = {
-    marginBottom: "25px",
-    color: "#003d6b",
-    fontSize: "24px", // increased
-  };
-
-  // ✅ One common style for ALL boxes (inputs & buttons)
-  const commonBoxStyle = {
-    width: "100%",
-    height: "60px", // increased height
-    fontSize: "18px", // increased font size
-    borderRadius: "8px",
-    margin: "12px 0",
-    boxSizing: "border-box",
-    display: "block",
-    border: "1px solid #ccc", // same border thickness
-    padding: "0 14px", // adjusted padding
-  };
-
-  const inputStyle = {
-    ...commonBoxStyle,
-    backgroundColor: "#fff",
-    color: "#000",
-  };
-
-  const buttonStyle = (isHovered) => ({
-    ...commonBoxStyle,
-    backgroundColor: isHovered ? "#008f4a" : "#00a859",
-    color: "white",
-    border: "1px solid #00a859",
-    cursor: "pointer",
-    padding: 0,
-    transition: "background-color 0.3s ease",
-    fontWeight: "bold",
-  });
-
   return (
-    <div style={containerStyle}>
-      {/* Gradient animation */}
-      <style>
-        {`
-          @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-          }
-        `}
-      </style>
+    <div className="dashboard-container">
+      {}
+      <aside className="sidebar">
+        <div className="logo-section">
+          <img src={logo} alt="Standard Chartered" className="logo" />
+        </div>
+        <div className="menu-section">
+          <ul>
+            <li>Dashboard</li>
+            <li>User Management</li>
+            <li>AD Group Access</li>
+            <li>Report Access</li>
+            <li>Settings</li>
+            <li>Account</li>
+            <li>Help</li>
+          </ul>
+        </div>
+      </aside>
 
-      <div style={cardStyle}>
-        <img src={logo} alt="Standard Chartered Logo" style={logoStyle} />
-        <h2 style={headingStyle}>Forgot Password</h2>
+      {}
+      <main className="main-content">
+        {}
+        <header className="header">
+          <h2>Admin Dashboard</h2>
+          <div className="header-right">
+            <p>Logged In as: Admin User</p>
+            <button className="logout-btn">Logout</button>
+          </div>
+        </header>
 
-        {/* Email / Username */}
-        <input
-          type="text"
-          placeholder="Enter Email / Username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={inputStyle}
-        />
+        {}
+        <section className="stats-section">
+          <div className="stat-card">
+            <h3>Active Users</h3>
+            <p className="stat-number">12</p>
+          </div>
+          <div className="stat-card">
+            <h3>Pending Requests</h3>
+            <p className="stat-number">4</p>
+          </div>
+          <div className="stat-card">
+            <h3>Recent Activity</h3>
+            <p className="stat-number">3</p>
+          </div>
+        </section>
 
-        {/* Send OTP */}
-        <button
-          onClick={handleSendOtp}
-          style={buttonStyle(hoverBtn === "send")}
-          onMouseEnter={() => setHoverBtn("send")}
-          onMouseLeave={() => setHoverBtn(null)}
-        >
-          Send OTP
-        </button>
-
-        {otpSent && (
-          <>
-            {/* Enter OTP */}
-            <input
-              type="text"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              style={inputStyle}
-            />
-
-            {/* Verify & Continue */}
-            <button
-              onClick={handleVerify}
-              style={buttonStyle(hoverBtn === "verify")}
-              onMouseEnter={() => setHoverBtn("verify")}
-              onMouseLeave={() => setHoverBtn(null)}
-            >
-              Verify & Continue
-            </button>
-          </>
-        )}
-      </div>
+        {}
+        <section className="recent-activities">
+          <h3>Recent Activities</h3>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> removed a user from AD group</p>
+            <span>1 hour ago</span>
+          </div>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> added a new report</p>
+            <span>3 hours ago</span>
+          </div>
+          <div className="activity-card">
+            <p><strong>Admin User</strong> assigned access to a user</p>
+            <span>1 day ago</span>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
