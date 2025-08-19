@@ -4,135 +4,106 @@ body {
   margin: 0;
 }
 
-.container {
+/* Layout */
+.app-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #003d6b; /* Standard Chartered Blue */
+  color: white;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  font-size: 18px;         /* Bigger font */
+  font-weight: 600;        /* Bold */
+  padding: 12px 16px;
+  margin: 6px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar li:hover {
+  background: #005999;     /* Hover effect */
+}
+
+.sidebar li.active {
+  background: #007bff;     /* Active menu highlight */
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background: #f5f5f5;
+}
+
+/* Dashboard Cards */
 .card {
   background: white;
-  padding: 40px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
   text-align: center;
-  width: 380px; /* Moderate width */
 }
 
-.logo {
-  width: 95px; /* Moderate logo size */
-  margin-bottom: 20px;
-}
-
-h2 {
-  margin-bottom: 20px;
+.card h2 {
+  margin: 0;
   color: #003d6b;
-  font-size: 22px; /* Slightly bigger heading */
 }
 
-input {
-  width: 100%;
-  padding: 12px; /* Moderate padding */
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 15px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
+.card p {
+  font-size: 20px;
   margin-top: 10px;
-  background-color: #00a859;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  font-size: 15px;
-  cursor: pointer;
+  font-weight: bold;
+  color: #00a859;
 }
-
-button:hover {
-  background-color: #008f4a;
-}
-
-
-
 
 
 
 
 import React, { useState } from "react";
 import "./App.css";
-import logo from "./Images/download.png";
 
-function App() {
-  const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
-
-  const handleSendOtp = () => {
-    if (!email) {
-      alert("Please enter your email or username");
-      return;
-    }
-    setOtpSent(true);
-    alert(`OTP sent to ${email}`);
-  };
-
-  const handleVerify = () => {
-    if (!otp) {
-      alert("Please enter the OTP");
-      return;
-    }
-    alert(`OTP verified: ${otp}`);
-  };
+function Sidebar({ active, setActive }) {
+  const menuItems = [
+    "Dashboard",
+    "User Management",
+    "AD Group Access",
+    "Report Access",
+    "Settings",
+    "Account",
+    "Help",
+  ];
 
   return (
-    <div className="container" style={{
-      background: "linear-gradient(-45deg, #007b5e, #00a884, #00bcd4, #4cafef)",
-      backgroundSize: "400% 400%",
-      animation: "gradientBG 8s ease infinite",
-    }}
->
-  <style>
-        {`
-          @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-          }
-        `}
-      </style>
-      <div className="card">
-        <img src={logo} alt="Standard Chartered Logo" className="logo" />
-        <h2>Forgot Password</h2>
-
-        <input
-          type="text"
-          placeholder="Enter Email / Username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <button onClick={handleSendOtp}>Send OTP</button>
-
-        {otpSent && (
-          <>
-            <input
-              type="text"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            <button onClick={handleVerify}>Verify & Continue</button>
-          </>
-        )}
-      </div>
+    <div className="sidebar">
+      <ul>
+        {menuItems.map((item) => (
+          <li
+            key={item}
+            className={active === item ? "active" : ""}
+            onClick={() => setActive(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-export default App;
-
-
+export default Sidebar;
