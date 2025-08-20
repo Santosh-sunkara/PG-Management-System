@@ -1,212 +1,179 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f8f9fa;
-  height: 100vh;
-  overflow: hidden; /* prevent scrolling */
-}
-
-.dashboard-container {
-  display: flex;
-  height: 100vh; /* full screen height */
-}
-
-/* Sidebar */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  height: 100%;
-}
-
-/* Logo section - white background */
-.logo-section {
-  background-color: white;
-  text-align: center;
-  padding: 15px;
-}
-
-.logo {
-  width: 150px;
-}
-
-/* Menu section - blue background */
-.menu-section {
-  flex: 1;
-  background-color: #0055a5; /* Standard Chartered Blue */
-  color: white;
-  padding: 20px 0;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.sidebar li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto; 
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.logout-btn {
-  padding: 8px 16px;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #45a049;
-}
-
-
-.stats-section {
-  display: flex;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.stat-card {
-  flex: 1;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2rem;
-  color: #4CAF50;
-}
-
-
-.recent-activities h3 {
-  margin-top: 0;
-}
-
-.activity-card {
-  background-color: white;
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-
-.activity-card span {
-  color: gray;
-  font-size: 0.85rem;
-}
-
-
-
-
-
-
-
-
-
 import React from "react";
-import "./App.css";
 import logo from "./Images/download.png";
 
 function App() {
-  return (
-    <div className="dashboard-container">
-      {}
-      <aside className="sidebar">
-        <div className="logo-section">
-          <img src={logo} alt="Standard Chartered" className="logo" />
-        </div>
-        <div className="menu-section">
-          <ul>
-            <li>Dashboard</li>
-            <li>User Management</li>
-            <li>AD Group Access</li>
-            <li>Report Access</li>
-            <li>Settings</li>
-            <li>Account</li>
-            <li>Help</li>
-          </ul>
-        </div>
-      </aside>
+  const containerStyle = {
+    display: "flex",
+    height: "100vh",
+    fontFamily: "Arial, sans-serif",
+    margin: 0,
+    backgroundColor: "#f8f9fa",
+    overflow: "hidden",
+  };
 
-      {}
-      <main className="main-content">
-        {}
-        <header className="header">
-          <h2>Admin Dashboard</h2>
-          <div className="header-right">
-            <p>Logged In as: Admin User</p>
-            <button className="logout-btn">Logout</button>
-          </div>
-        </header>
+  const sidebarStyle = {
+    display: "flex",
+    flexDirection: "column",
+    width: "220px",
+    height: "100%",
+  };
 
-        {}
-        <section className="stats-section">
-          <div className="stat-card">
-            <h3>Active Users</h3>
-            <p className="stat-number">12</p>
-          </div>
-          <div className="stat-card">
-            <h3>Pending Requests</h3>
-            <p className="stat-number">4</p>
-          </div>
-          <div className="stat-card">
-            <h3>Recent Activity</h3>
-            <p className="stat-number">3</p>
-          </div>
-        </section>
+  const logoSectionStyle = {
+    backgroundColor: "white",
+    textAlign: "center",
+    padding: "15px",
+  };
 
-        {}
-        <section className="recent-activities">
-          <h3>Recent Activities</h3>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> removed a user from AD group</p>
-            <span>1 hour ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> added a new report</p>
-            <span>3 hours ago</span>
-          </div>
-          <div className="activity-card">
-            <p><strong>Admin User</strong> assigned access to a user</p>
-            <span>1 day ago</span>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+  const logoStyle = {
+    width: "150px",
+  };
+
+  const menuSectionStyle = {
+    flex: 1,
+    backgroundColor: "#0055a5",
+    color: "white",
+    padding: "20px 0",
+  };
+
+  const ulStyle = {
+    listStyle: "none",
+    padding: 0,
+    margin: 0,
+  };
+
+  const liStyle = {
+    padding: "14px 20px",
+    cursor: "pointer",
+    borderRadius: "5px",
+    fontSize: "18px", // ✅ Increased font size
+    fontWeight: "500",
+  };
+
+  const mainContentStyle = {
+    flex: 1,
+    padding: "20px",
+    overflowY: "auto",
+  };
+
+  const headerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  };
+
+  const headerRightStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+  };
+
+  const logoutBtnStyle = {
+    padding: "8px 16px",
+    backgroundColor: "#4CAF50",
+    border: "none",
+    color: "white",
+    borderRadius: "4px",
+    cursor: "pointer",
+  };
+
+  const statsSectionStyle = {
+    display: "flex",
+    gap: "20px",
+    margin: "20px 0",
+  };
+
+  const statCardStyle = {
+    flex: 1,
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "8px",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+    textAlign: "center",
+  };
+
+  const statNumberStyle = {
+    fontSize: "2rem",
+    color: "#4CAF50",
+  };
+
+  const activityCardStyle = {
+    backgroundColor: "white",
+    padding: "15px",
+    marginTop: "10px",
+    borderRadius: "8px",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+  };
+
+  const activitySpanStyle = {
+    color: "gray",
+    fontSize: "0.85rem",
+  };
+
+  return (
+    <div style={containerStyle}>
+      {/* Sidebar */}
+      <aside style={sidebarStyle}>
+        <div style={logoSectionStyle}>
+          <img src={logo} alt="Standard Chartered" style={logoStyle} />
+        </div>
+        <div style={menuSectionStyle}>
+          <ul style={ulStyle}>
+            <li style={liStyle}>Dashboard</li>
+            <li style={liStyle}>User Management</li>
+            <li style={liStyle}>AD Group Access</li>
+            {/* 🚫 Report Access removed */}
+            <li style={liStyle}>Settings</li>
+            <li style={liStyle}>Account</li>
+            <li style={liStyle}>Help</li>
+          </ul>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <main style={mainContentStyle}>
+        <header style={headerStyle}>
+          <h2>Admin Dashboard</h2>
+          <div style={headerRightStyle}>
+            <p>Logged In as: Admin User</p>
+            <button style={logoutBtnStyle}>Logout</button>
+          </div>
+        </header>
+
+        {/* Stats */}
+        <section style={statsSectionStyle}>
+          <div style={statCardStyle}>
+            <h3>Active Users</h3>
+            <p style={statNumberStyle}>12</p>
+          </div>
+          <div style={statCardStyle}>
+            <h3>Pending Requests</h3>
+            <p style={statNumberStyle}>4</p>
+          </div>
+          <div style={statCardStyle}>
+            <h3>Recent Activity</h3>
+            <p style={statNumberStyle}>3</p>
+          </div>
+        </section>
+
+        {/* Recent Activities */}
+        <section>
+          <h3>Recent Activities</h3>
+          <div style={activityCardStyle}>
+            <p><strong>Admin User</strong> removed a user from AD group</p>
+            <span style={activitySpanStyle}>1 hour ago</span>
+          </div>
+          <div style={activityCardStyle}>
+            <p><strong>Admin User</strong> added a new report</p>
+            <span style={activitySpanStyle}>3 hours ago</span>
+          </div>
+          <div style={activityCardStyle}>
+            <p><strong>Admin User</strong> assigned access to a user</p>
+            <span style={activitySpanStyle}>1 day ago</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 }
 
 export default App;
-
-
-
-These are my app.css and app.js file code now give me a single code merger these 2 codes and also remove the report access button 
