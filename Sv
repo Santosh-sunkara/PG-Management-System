@@ -1,1 +1,32 @@
+Subject: Justification for GitHub Finding – SIR0277444
 
+Dear Alfred,
+
+This is in response to the GitHub finding raised under SIR0277444.
+
+I would like to clarify that the uploaded content does not contain any business, client, or confidential data belonging to Standard Chartered. The file committed was part of a personal practice project (“PG Management System”) and contained a placeholder message along with an automatically generated link. The intent was purely developmental and academic in nature, not related to any Standard Chartered project or data.
+
+The SharePoint URL that appeared in the commit was inadvertently included during testing and does not expose or provide access to any business-sensitive information. It does not contain credentials, client data, or confidential project materials.
+
+To remediate this, I have already taken down the content from the GitHub repository. Moving forward, I will ensure stricter checks to avoid any unintentional uploads and will keep my repositories free from any references to internal systems or links.
+
+Please be assured that there was no business impact, no data leakage, and no Standard Chartered information disclosed through this upload.
+
+Best regards,
+Shiva Santosh
+
+👉 This justification:
+
+Acknowledges the issue.
+
+Clarifies no business/confidential data was uploaded.
+
+Explains it was part of a practice project, not SCB work.
+
+Mentions remediation (link taken down).
+
+Reassures no business impact.
+
+Would you like me to also make a shorter, risk-team–style version (more compliance tone, less narrative) so Alfred can just paste it back to the Cyber Defence team?
+
+ChatGPT can make mistakes. Check important info. See Cookie Pr
