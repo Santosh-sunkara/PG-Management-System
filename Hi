@@ -1,10 +1,1 @@
-@Override
-public String deleteCustomer(Integer id) {
-    for (int i = 0; i < customers.size(); i++) {
-        if (customers.get(i).getId().equals(id)) {
-            customers.remove(i);
-            return "Customer deleted successfully";
-        }
-    }
-    return "Unable to delete customer";
-}
+Sir, this is the file I had shared with Santosh. It’s just a normal assignment code that you have already spoken to him about and sorted out, it seems. So, should I also need to send a mail, Sir
